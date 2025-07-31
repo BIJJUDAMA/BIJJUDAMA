@@ -8,7 +8,7 @@ My projects reflect my passion for creating engaging digital experiences, whethe
 
 ### 🚀 What I Do
 
-I specialize in bringing ideas to life by working across the entire stack. I'm comfortable building with modern JavaScript frameworks like **React** alongside powerful serverless backends like **Supabase**, as well as crafting applications with traditional, robust frameworks like **Python** and **Django**.
+I specialize in bringing ideas to life by working across the entire stack. I'm comfortable building with modern JavaScript frameworks like **React** alongside powerful serverless backends like **Supabase**, as well as crafting applications with traditional, robust frameworks like **Django**.
 
 - 💻 **Frontend:** I focus on creating fast, responsive, and intuitive user interfaces using **React**, **Vite**, and **Tailwind CSS/Bootstrap CSS**. I love adding a layer of polish with animations using tools like **Framer Motion/Animate.css**.
 - 🛠️ **Backend:** I have experience building secure and scalable backend systems, handling everything from user authentication and database management (**MySQL**,**Supabase**,**Firebase**) to API logic.
