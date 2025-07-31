@@ -35,9 +35,10 @@ Here are some of the technologies I'm proficient with:
 
 I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me!
 
--[LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
+[LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
 
 ![BIJJUDAMA's Stats](https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true)
 
-![BIJJUDAMA's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact)
+![BIJJUDAMA's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact&card_width=495)
+
 
