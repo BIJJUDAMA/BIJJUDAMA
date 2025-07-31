@@ -11,7 +11,7 @@ My projects reflect my passion for creating engaging digital experiences, whethe
 I specialize in bringing ideas to life by working across the entire stack. I'm comfortable building with modern JavaScript frameworks like **React** alongside powerful serverless backends like **Supabase**, as well as crafting applications with traditional, robust frameworks like **Python** and **Django**.
 
 - 💻 **Frontend:** I focus on creating fast, responsive, and intuitive user interfaces using **React**, **Vite**, and **Tailwind CSS/Bootstrap CSS**. I love adding a layer of polish with animations using tools like **Framer Motion/Animate.css**.
-- 🛠️ **Backend:** I have experience building secure and scalable backend systems, handling everything from user authentication and database management (**MySQL**) to API logic.
+- 🛠️ **Backend:** I have experience building secure and scalable backend systems, handling everything from user authentication and database management (**MySQL**,**Supabase**,**Firebase**) to API logic.
 - 🎨 **Full-Stack Integration:** I excel at connecting the frontend and backend seamlessly to create full-featured applications with features like user profiles, admin dashboards, and dynamic content.
 
 ---
@@ -20,12 +20,12 @@ I specialize in bringing ideas to life by working across the entire stack. I'm c
 
 
 
-| Frontend           | Backend                | Databases        | Styling & UI/UX  |
-| ------------------ | ---------------------- | ---------------- | -----------------|
-| React              | Python (Django)        |  MySQL           | Tailwind CSS     |
-| Vite               | Supabase               |                  | Bootstrap CSS    |
-| JavaScript (ES6+)  | Node.js (for tooling)  |                  | Framer Motion    |
-| HTML5 & CSS3       |                        |                  | shadcn/ui        |
+| Frontend           | Backend                | Databases        | Styling & UI/UX                |
+| ------------------ | ---------------------- | ---------------- | -------------------------------|
+| React              | Python (Django)        |  MySQL           | Tailwind CSS/Bootstrap CSS     |
+| Vite               | Supabase               |  Firebase        | Framer Motion/Animate.css      |
+| JavaScript (ES6+)  | Node.js (for tooling)  |  Supabase        |  shadcn/ui                     |
+| HTML5 & CSS3       |                        |                  |                                |
 
 
 
