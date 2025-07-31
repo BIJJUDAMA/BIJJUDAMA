@@ -20,12 +20,12 @@ I specialize in bringing ideas to life by working across the entire stack. I'm c
 
 Here are some of the technologies I'm proficient with:
 
-| Frontend           | Backend                | Databases        | Styling & UI/UX               |
-| ------------------ | ---------------------- | ---------------- | ----------------------------- |
-| React              | Python (Django)        |  MySQL           | Tailwind CSS                  |
-| Vite               | Supabase               |                  | Framer Motion                 |
-| JavaScript (ES6+)  | Node.js (for tooling)  |                  | shadcn/ui                     |
-| HTML5 & CSS3       |                        |                  |                               |
+| Frontend           | Backend                | Databases        | Styling & UI/UX  |
+| ------------------ | ---------------------- | ---------------- | -----------------|
+| React              | Python (Django)        |  MySQL           | Tailwind CSS     |
+| Vite               | Supabase               |                  | Bootstrap CSS    |
+| JavaScript (ES6+)  | Node.js (for tooling)  |                  | Framer Motion    |
+| HTML5 & CSS3       |                        |                  | shadcn/ui        |
 
 **DevOps & Tools:** Git, GitHub, Vercel, CLI, Virtual Environments
 
@@ -35,8 +35,9 @@ Here are some of the technologies I'm proficient with:
 
 I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me!
 
-- **LinkedIn:** `[ https://www.linkedin.com/in/shankarnitansh/]`
-
+-[LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
 
 ![BIJJUDAMA's Stats](https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true)
+
 ![BIJJUDAMA's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact)
+
