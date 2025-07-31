@@ -1,16 +1,42 @@
-## Hi there 👋
+# 👋 Hello there! I'm Nitansh Shankar
 
-<!--
-**BIJJUDAMA/BIJJUDAMA** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I'm an aspiring full-stack developer passionate about building complete, user-centric web applications from the ground up. I enjoy working across the entire development lifecycle, from designing interactive frontends to engineering robust, scalable backends.
 
-Here are some ideas to get you started:
+My projects reflect my passion for creating engaging digital experiences, whether it's a modern social platform for artists or a classic game brought to life with code.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+### 🚀 What I Do
+
+I specialize in bringing ideas to life by working across the entire stack. I'm comfortable building with modern JavaScript frameworks like **React** alongside powerful serverless backends like **Supabase**, as well as crafting applications with traditional, robust frameworks like **Python** and **Django**.
+
+- 💻 **Frontend:** I focus on creating fast, responsive, and intuitive user interfaces using **React**, **Vite**, and **Tailwind CSS/Bootstrap CSS**. I love adding a layer of polish with animations using tools like **Framer Motion/Animate.css**.
+- 🛠️ **Backend:** I have experience building secure and scalable backend systems, handling everything from user authentication and database management (**MySQL**) to API logic.
+- 🎨 **Full-Stack Integration:** I excel at connecting the frontend and backend seamlessly to create full-featured applications with features like user profiles, admin dashboards, and dynamic content.
+
+---
+
+### 🔧 Technologies & Tools
+
+Here are some of the technologies I'm proficient with:
+
+| Frontend           | Backend                | Databases        | Styling & UI/UX               |
+| ------------------ | ---------------------- | ---------------- | ----------------------------- |
+| React              | Python (Django)        |  MySQL           | Tailwind CSS                  |
+| Vite               | Supabase               |                  | Framer Motion                 |
+| JavaScript (ES6+)  | Node.js (for tooling)  |                  | shadcn/ui                     |
+| HTML5 & CSS3       |                        |                  |                               |
+
+**DevOps & Tools:** Git, GitHub, Vercel, CLI, Virtual Environments
+
+---
+
+### 📫 How to Reach Me
+
+I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me!
+
+- **LinkedIn:** `[ https://www.linkedin.com/in/shankarnitansh/]`
+
+
+![BIJJUDAMA's Stats](https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true)
+![BIJJUDAMA's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact)
