@@ -39,6 +39,6 @@ I'm always open to discussing new projects, creative ideas, or opportunities to 
 
 ![BIJJUDAMA's Stats](https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true)
 
-![BIJJUDAMA's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact&card_width=495)
+![BIJJUDAMA's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact&card_width=490)
 
 
