@@ -23,9 +23,9 @@ I specialize in bringing ideas to life by working across the entire stack. I'm c
 | Frontend           | Backend                | Databases        | Styling & UI/UX                |
 | ------------------ | ---------------------- | ---------------- | -------------------------------|
 | React              | Python (Django)        |  MySQL           | Tailwind CSS/Bootstrap CSS     |
-| Vite               | Supabase               |  Firebase        | Framer Motion/Animate.css      |
-| JavaScript (ES6+)  | Node.js (for tooling)  |  Supabase        |  shadcn/ui                     |
-| HTML5 & CSS3       |                        |                  |                                |
+| Vite               | Supabase               |                  | Framer Motion/Animate.css      |
+| JavaScript (ES6+)  | Node.js (for tooling)  |                  |  shadcn/ui                     |
+| HTML5 & CSS3       | Firebase               |                  |                                |
 
 
 
