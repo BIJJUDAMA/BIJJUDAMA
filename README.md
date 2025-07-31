@@ -18,7 +18,7 @@ I specialize in bringing ideas to life by working across the entire stack. I'm c
 
 ### 🔧 Technologies & Tools
 
-Here are some of the technologies I'm proficient with:
+
 
 | Frontend           | Backend                | Databases        | Styling & UI/UX  |
 | ------------------ | ---------------------- | ---------------- | -----------------|
@@ -27,18 +27,20 @@ Here are some of the technologies I'm proficient with:
 | JavaScript (ES6+)  | Node.js (for tooling)  |                  | Framer Motion    |
 | HTML5 & CSS3       |                        |                  | shadcn/ui        |
 
+
+
 **DevOps & Tools:** Git, GitHub, Vercel, CLI, Virtual Environments
 
 ---
 
 ### 📫 How to Reach Me
 
-I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me!
+I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
 
-[LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
+<div align="center">
 
-![BIJJUDAMA's Stats](https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true)
+<img src="https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true" width="490"><br>
 
-![BIJJUDAMA's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact&card_width=490)
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact&card_width=490" width="490" >
 
-
+</div>
