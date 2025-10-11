@@ -1,4 +1,4 @@
-# 👋 Hello there! I'm Nitansh Shankar
+#  Hello there! I'm Nitansh Shankar
 
 I'm an aspiring full-stack developer passionate about building complete, user-centric web applications from the ground up. I enjoy working across the entire development lifecycle, from designing interactive frontends to engineering robust, scalable backends.
 
@@ -12,17 +12,17 @@ My projects reflect my passion for creating engaging digital experiences, whethe
 
 ---
 
-### 🚀 What I Do
+###  What I Do
 
 I specialize in bringing ideas to life by working across the entire stack. I'm comfortable building with modern JavaScript frameworks like **React** alongside powerful serverless backends like **Supabase**, as well as crafting applications with traditional, robust frameworks like **Django**.
 
-- 💻 **Frontend:** I focus on creating fast, responsive, and intuitive user interfaces using **React**, **Vite**, and **Tailwind CSS/Bootstrap CSS**. I love adding a layer of polish with animations using tools like **Framer Motion/Animate.css**.
-- 🛠️ **Backend:** I have experience building secure and scalable backend systems, handling everything from user authentication and database management (**MySQL**,**Supabase**,**Firebase**) to API logic.
-- 🎨 **Full-Stack Integration:** I excel at connecting the frontend and backend seamlessly to create full-featured applications with features like user profiles, admin dashboards, and dynamic content.
+-  **Frontend:** I focus on creating fast, responsive, and intuitive user interfaces using **React**, **Vite**, and **Tailwind CSS/Bootstrap CSS**. I love adding a layer of polish with animations using tools like **Framer Motion/Animate.css**.
+-  **Backend:** I have experience building secure and scalable backend systems, handling everything from user authentication and database management (**MySQL**,**Supabase**,**Firebase**) to API logic.
+-  **Full-Stack Integration:** I excel at connecting the frontend and backend seamlessly to create full-featured applications with features like user profiles, admin dashboards, and dynamic content.
 
 ---
 
-### 🔧 Technologies & Tools
+###  Technologies & Tools
 
 
 
@@ -39,7 +39,7 @@ I specialize in bringing ideas to life by working across the entire stack. I'm c
 
 ---
 
-### 📫 How to Reach Me
+###  How to Reach Me
 
 I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
 
