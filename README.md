@@ -30,8 +30,8 @@ I specialize in bringing ideas to life by working across the entire stack. I'm c
 | ------------------ | ---------------------- | ---------------- | -------------------------------|
 | React              | Python (Django)        |  MySQL           | Tailwind CSS/Bootstrap CSS     |
 | Vite               | Supabase               |                  | Framer Motion/Animate.css      |
-| JavaScript (ES6+)  | Node.js (for tooling)  |                  |  shadcn/ui                     |
-| HTML5 & CSS3       | Firebase               |                  |                                |
+| JavaScript (ES6+)  | Node.js (for tooling)  |                  | shadcn/ui                      |
+| HTML5 & CSS3       |                        |                  |                                |
 
 
 
