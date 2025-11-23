@@ -44,9 +44,7 @@ I specialize in bringing ideas to life by working across the entire stack. I'm c
 I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
 
 <div align="center">
-
 <img src="https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true" width="490"><br>
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact&card_width=490" width="490" >
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact" width="490" >
 
 </div>
