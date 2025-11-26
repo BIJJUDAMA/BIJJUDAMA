@@ -16,8 +16,7 @@ My projects reflect my passion for creating engaging digital experiences, whethe
 I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
 
 <div align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&count_private=true" width="500"><br> 
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact" width="400"
+  <a href="https://awesome-github-stats.azurewebsites.net/index.html??cardType=github&theme=solarized-dark&showIcons=false&preferLogin=false">    <img  alt="BIJJUDAMA's GitHub Stats" src="https://awesome-github-stats.azurewebsites.net/user-stats/BIJJUDAMA?cardType=github&theme=solarized-dark&showIcons=false&preferLogin=false" />  </a><br> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BIJJUDAMA&theme=solarized-dark&show_icons=true&hide_border=true&layout=compact" width="400"
 
 
 </div>
