@@ -14,9 +14,3 @@ My projects reflect my passion for creating engaging digital experiences, whethe
 ###  How to Reach Me
 
 I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/shankarnitansh/)
-
-<div align="center">
-    <a href="https://awesome-github-stats.azurewebsites.net/index.html??cardType=github&theme=github-dark&fontFamily=Cal%20Sans&preferLogin=false&borderRadius=4&Text=DDCD32&Title=DDCD32">    <img  alt="BIJJUDAMA's GitHub Stats" src="https://awesome-github-stats.azurewebsites.net/user-stats/BIJJUDAMA?cardType=github&theme=github-dark&fontFamily=Cal%20Sans&preferLogin=false&borderRadius=4&Text=DDCD32&Title=DDCD32" />  </a><br> 
-
-
-</div>
