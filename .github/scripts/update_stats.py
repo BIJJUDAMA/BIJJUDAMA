@@ -119,6 +119,10 @@ lang_list += '</div>'
 
 plain_text_md = f"""
 <div align="center">
+  <br/>
+  <h3 style="color: #70a5fd; margin-bottom: 5px;">GitHub Overview</h3>
+  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 15px;">
+  
   <h3>
     <span style="color: #70a5fd">Total Stars Earned:</span> <b>{stars}</b>
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -131,9 +135,13 @@ plain_text_md = f"""
     <span style="color: #70a5fd">Total Contributions:</span> <b>{total_commits}</b>
   </h3>
 
-  <br/>
+  <br/><br/>
+  <h3 style="color: #bb9af7; margin-bottom: 5px;">Top Languages</h3>
+  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 15px;">
+  
   {progress_bar}
   {lang_list}
+  <br/>
 </div>
 """
 
