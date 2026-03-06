@@ -3,6 +3,7 @@ import json
 import urllib.request
 import datetime
 import re
+from collections import defaultdict
 
 TOKEN = os.environ.get("GH_TOKEN")
 USERNAME = os.environ.get("GITHUB_REPOSITORY_OWNER") or "BIJJUDAMA"
@@ -48,7 +49,18 @@ query {{
   user(login: "{USERNAME}") {{
     repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {{
       totalCount
-      nodes {{ stargazerCount }}
+      nodes {{ 
+        stargazerCount 
+        languages(first: 10, orderBy: {{field: SIZE, direction: DESC}}) {{
+          edges {{
+            size
+            node {{
+              name
+              color
+            }}
+          }}
+        }}
+      }}
     }}
     issues {{ totalCount }}
     pullRequests {{ totalCount }}
@@ -69,6 +81,42 @@ for year in range(created_year, current_year + 1):
     col = data[f'year__{year}']
     total_commits += col['contributionCalendar']['totalContributions'] + col['restrictedContributionsCount']
 
+# Calculate top languages
+langs = defaultdict(int)
+lang_colors = {}
+total_size = 0
+
+for repo in data['repositories']['nodes']:
+    for edge in repo['languages']['edges']:
+        name = edge['node']['name']
+        size = edge['size']
+        color = edge['node']['color']
+        
+        langs[name] += size
+        lang_colors[name] = color
+        total_size += size
+
+# Sort and get top 5 languages
+sorted_langs = sorted(langs.items(), key=lambda x: x[1], reverse=True)[:5]
+
+# Build the custom progress bar HTML
+progress_bar = '<div style="display: flex; width: 100%; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 15px; margin-bottom: 15px;">\n'
+lang_list = '<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">\n'
+
+# Only do language math if there's actually code
+if total_size > 0:
+    for name, size in sorted_langs:
+        pct = (size / total_size) * 100
+        # Ignore things under 1% to keep it clean
+        if pct < 1: continue 
+        
+        color = lang_colors.get(name) or "#cccccc"
+        progress_bar += f'  <div style="width: {pct}%; background-color: {color};" title="{name} {pct:.1f}%"></div>\n'
+        lang_list += f'  <span style="font-size: 13px;"><b><span style="color: {color};">●</span> {name}</b> <span style="color: #888;">{pct:.1f}%</span></span>\n'
+
+progress_bar += '</div>'
+lang_list += '</div>'
+
 plain_text_md = f"""
 <div align="center">
   <h3>
@@ -82,6 +130,10 @@ plain_text_md = f"""
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <span style="color: #70a5fd">Total Contributions:</span> <b>{total_commits}</b>
   </h3>
+
+  <br/>
+  {progress_bar}
+  {lang_list}
 </div>
 """
 
