@@ -170,8 +170,8 @@ if total_size > 0:
         
         color = lang_colors.get(name, "#cccccc")
         
-        filled = max(1, int(pct / 10))
-        empty = 10 - filled
+        filled = max(1, int(pct / 5))
+        empty = 20 - filled
         bar = '█' * filled + '░' * empty
         
         svg_langs += f"""
@@ -179,8 +179,8 @@ if total_size > 0:
   <rect x="0" y="{y_offset + 5}" width="110" height="24" fill="{color}" />
   <text x="55" y="{y_offset + 22}" class="lang-text badge-text">{name}</text>
   
-  <!-- Unicode Bar Text (Right Aligned to Percentage) -->
-  <text x="520" y="{y_offset + 22}" class="lang-text" fill="{color}" text-anchor="end">{bar}</text>
+  <!-- Unicode Bar (After Badge) -->
+  <text x="130" y="{y_offset + 22}" class="lang-text" fill="{color}" text-anchor="start">{bar}</text>
   
   <!-- Percentage Text (Right Aligned) -->
   <text x="590" y="{y_offset + 22}" class="lang-text pct-text">{pct:.1f}%</text>
