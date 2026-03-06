@@ -44,17 +44,13 @@
 ### GitHub Stats
 
 <p align="center">
-  <a href="https://github.com/BIJJUDAMA">
-    <img src="https://github-readme-stats.vercel.app/api?username=BIJJUDAMA&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="Nitansh's GitHub stats" />
-  </a>
-  <a href="https://github.com/BIJJUDAMA">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=BIJJUDAMA&theme=tokyonight&hide_border=true" alt="Nitansh's GitHub streak" />
-  </a>
+  <!--STATS_START-->
+  <!--STATS_END-->
 </p>
 
 <br/>
 
-### 🐍 Contribution Graph
+### Contribution Graph
 
 <p align="center">
   <picture>
