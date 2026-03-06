@@ -99,23 +99,81 @@ for repo in data['repositories']['nodes']:
 # Sort and get top 5 languages
 sorted_langs = sorted(langs.items(), key=lambda x: x[1], reverse=True)[:5]
 
-# Build the custom progress bar HTML
-progress_bar = '<div style="display: flex; width: 100%; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 15px; margin-bottom: 15px;">\n'
-lang_list = '<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">\n'
+# 1. Generate overview.svg (Glassmorphism style)
+svg = f"""<svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;display=swap');
+      .box {{ fill: rgba(26, 27, 38, 0.4); rx: 12px; stroke-width: 1.5px; }}
+      .box-blue {{ stroke: rgba(112, 165, 253, 0.6); }}
+      .box-purple {{ stroke: rgba(187, 154, 247, 0.6); }}
+      .box-green {{ stroke: rgba(56, 189, 174, 0.6); }}
+      .box-cyan {{ stroke: rgba(169, 177, 214, 0.6); }}
+      .title {{ font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; text-anchor: middle; }}
+      .title-blue {{ fill: #70a5fd; }}
+      .title-purple {{ fill: #bb9af7; }}
+      .title-green {{ fill: #38bdae; }}
+      .title-cyan {{ fill: #a9b1d6; }}
+      .value {{ font-family: 'Fira Code', monospace; fill: #ffffff; font-size: 26px; font-weight: 600; text-anchor: middle; }}
+    </style>
+  </defs>
 
-# Only do language math if there's actually code
+  <!-- Row 1 -->
+  <rect x="50" y="20" width="240" height="60" class="box box-blue" />
+  <text x="170" y="42" class="title title-blue">TOTAL STARS EARNED</text>
+  <text x="170" y="68" class="value">{stars}</text>
+
+  <rect x="310" y="20" width="240" height="60" class="box box-purple" />
+  <text x="430" y="42" class="title title-purple">PUBLIC REPOSITORIES</text>
+  <text x="430" y="68" class="value">{repos}</text>
+
+  <!-- Row 2 -->
+  <rect x="50" y="95" width="240" height="60" class="box box-green" />
+  <text x="170" y="117" class="title title-green">ISSUES OPENED</text>
+  <text x="170" y="143" class="value">{issues}</text>
+
+  <rect x="310" y="95" width="240" height="60" class="box box-cyan" />
+  <text x="430" y="117" class="title title-cyan">PULL REQUESTS</text>
+  <text x="430" y="143" class="value">{prs}</text>
+
+  <!-- Row 3 -->
+  <rect x="180" y="170" width="240" height="60" class="box box-blue" />
+  <text x="300" y="192" class="title title-blue">ALL-TIME CONTRIBUTIONS</text>
+  <text x="300" y="218" class="value">{total_commits}</text>
+</svg>"""
+
+with open("overview.svg", "w", encoding="utf-8") as f:
+    f.write(svg)
+
+# 2. Generate Top Languages hybrid badges
+import urllib.parse
+lang_list = '<div align="center" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">\n'
+
 if total_size > 0:
     for name, size in sorted_langs:
         pct = (size / total_size) * 100
-        # Ignore things under 1% to keep it clean
         if pct < 1: continue 
         
         color = lang_colors.get(name) or "#cccccc"
-        progress_bar += f'  <div style="width: {pct}%; background-color: {color};" title="{name} {pct:.1f}%"></div>\n'
-        lang_list += f'  <span style="font-size: 13px;"><b><span style="color: {color};">●</span> {name}</b> <span style="color: #888;">{pct:.1f}%</span></span>\n'
+        color_clean = color.replace('#', '')
+        
+        filled = max(1, int(pct / 10))
+        empty = 10 - filled
+        bar = '█' * filled + '░' * empty
+        
+        # Shields.io needs - and _ to be duplicated
+        raw_name = name.replace('-', '--').replace('_', '__')
+        name_enc = urllib.parse.quote(raw_name)
+        
+        raw_msg = f"{bar} {pct:.1f}%".replace('-', '--').replace('_', '__')
+        msg_enc = urllib.parse.quote(raw_msg)
+        
+        logo = urllib.parse.quote(name.lower())
+        
+        url = f"https://img.shields.io/badge/{name_enc}-{msg_enc}-{color_clean}?style=for-the-badge&logo={logo}&logoColor=white"
+        lang_list += f'  <img src="{url}" alt="{name}" style="margin-bottom: 5px;"/>\n'
 
-progress_bar += '</div>'
-lang_list += '</div>'
+lang_list += '</div>\n'
 
 plain_text_md = f"""
 <div align="center">
@@ -123,24 +181,13 @@ plain_text_md = f"""
   <h3 style="color: #70a5fd; margin-bottom: 5px;">GitHub Overview</h3>
   <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 15px;">
   
-  <h3>
-    <span style="color: #70a5fd">Total Stars Earned:</span> <b>{stars}</b>
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="color: #bb9af7">Public Repositories:</span> <b>{repos}</b>
-    <br/><br/>
-    <span style="color: #38bdae">Issues Opened:</span> <b>{issues}</b>
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="color: #a9b1d6">Pull Requests:</span> <b>{prs}</b>
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="color: #70a5fd">Total Contributions:</span> <b>{total_commits}</b>
-  </h3>
+  <img src="overview.svg" alt="GitHub Overview" />
 
   <br/><br/>
   <h3 style="color: #bb9af7; margin-bottom: 5px;">Top Languages</h3>
   <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 15px;">
   
-  {progress_bar}
-  {lang_list}
+{lang_list}
   <br/>
 </div>
 """
