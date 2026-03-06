@@ -109,12 +109,19 @@ svg = f"""<svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.
       .box-purple {{ stroke: rgba(187, 154, 247, 0.6); }}
       .box-green {{ stroke: rgba(56, 189, 174, 0.6); }}
       .box-cyan {{ stroke: rgba(169, 177, 214, 0.6); }}
+      
       .title {{ font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; text-anchor: middle; }}
       .title-blue {{ fill: #70a5fd; }}
       .title-purple {{ fill: #bb9af7; }}
       .title-green {{ fill: #38bdae; }}
       .title-cyan {{ fill: #a9b1d6; }}
+      
       .value {{ font-family: 'Fira Code', monospace; fill: #ffffff; font-size: 26px; font-weight: 600; text-anchor: middle; }}
+      
+      @media (prefers-color-scheme: light) {{
+        .value {{ fill: #1a1b26; }}
+        .box {{ fill: rgba(255, 255, 255, 0.6); }}
+      }}
     </style>
   </defs>
 
@@ -147,7 +154,7 @@ with open("overview.svg", "w", encoding="utf-8") as f:
 
 # 2. Generate Top Languages hybrid badges
 import urllib.parse
-lang_list = '<div align="center" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">\n'
+lang_list = '<div align="center">\n'
 
 if total_size > 0:
     for name, size in sorted_langs:
@@ -171,7 +178,7 @@ if total_size > 0:
         logo = urllib.parse.quote(name.lower())
         
         url = f"https://img.shields.io/badge/{name_enc}-{msg_enc}-{color_clean}?style=for-the-badge&logo={logo}&logoColor=white"
-        lang_list += f'  <img src="{url}" alt="{name}" style="margin-bottom: 5px;"/>\n'
+        lang_list += f'  <img src="{url}" alt="{name}" style="margin-bottom: 8px;"/><br/>\n'
 
 lang_list += '</div>\n'
 
@@ -179,13 +186,13 @@ plain_text_md = f"""
 <div align="center">
   <br/>
   <h3 style="color: #70a5fd; margin-bottom: 5px;">GitHub Overview</h3>
-  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 15px;">
+  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 25px;">
   
-  <img src="overview.svg" alt="GitHub Overview" />
+  <img src="overview.svg" alt="GitHub Overview" style="max-width: 100%; height: auto;" />
 
-  <br/><br/>
+  <br/><br/><br/>
   <h3 style="color: #bb9af7; margin-bottom: 5px;">Top Languages</h3>
-  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 15px;">
+  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 25px;">
   
 {lang_list}
   <br/>
