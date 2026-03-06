@@ -76,8 +76,19 @@
 <br/>
 
 <div align="center">
-  <i>"Code is poetry."</i><br>
-  Check out my <a href="https://nitansh.netlify.app/">portfolio</a> for more updates!
+  <br/>
+  
+  ═══════════════════════════════════════════════════════
+  
+  <h2><i>"Code is poetry."</i></h2>
+  
+  ═══════════════════════════════════════════════════════
+  
+  <br/>
+  
+  <a href="https://nitansh.netlify.app/">
+    <img src="https://img.shields.io/badge/Visit_My_Portfolio_%E2%86%92-000000?style=for-the-badge&logo=firefox&logoColor=00CBCE" alt="Portfolio" />
+  </a>
 </div>
 
 
