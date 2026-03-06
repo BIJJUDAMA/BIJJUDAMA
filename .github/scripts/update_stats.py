@@ -145,7 +145,7 @@ with open("overview.svg", "w", encoding="utf-8") as f:
 
 # 2. Generate languages.svg (Left badges, right bars)
 num_langs = min(5, sum(1 for n, s in sorted_langs if (s/total_size)*100 >= 1)) if total_size > 0 else 0
-svg_height = max(40, num_langs * 40)
+svg_height = max(45, num_langs * 45)
 
 svg_langs = f"""<svg width="600" height="{svg_height}" viewBox="0 0 600 {svg_height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -153,6 +153,7 @@ svg_langs = f"""<svg width="600" height="{svg_height}" viewBox="0 0 600 {svg_hei
       @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;display=swap');
       .lang-text {{ font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; }}
       .badge-text {{ fill: #000000; text-anchor: middle; font-weight: 600; text-transform: uppercase; }}
+      .bar-text {{ font-size: 20px; letter-spacing: -2px; }}
       .pct-text {{ fill: #ffffff; text-anchor: end; }}
       
       @media (prefers-color-scheme: light) {{
@@ -170,22 +171,22 @@ if total_size > 0:
         
         color = lang_colors.get(name, "#cccccc")
         
-        filled = max(1, int(pct / 5))
-        empty = 20 - filled
+        filled = max(1, int((pct / 100) * 30))
+        empty = 30 - filled
         bar = '█' * filled + '░' * empty
         
         svg_langs += f"""
   <!-- Badge (Left Aligned Sharp) -->
-  <rect x="0" y="{y_offset + 5}" width="110" height="24" fill="{color}" />
-  <text x="55" y="{y_offset + 22}" class="lang-text badge-text">{name}</text>
+  <rect x="0" y="{y_offset + 5}" width="110" height="28" fill="{color}" />
+  <text x="55" y="{y_offset + 24}" class="lang-text badge-text">{name}</text>
   
   <!-- Unicode Bar (After Badge) -->
-  <text x="130" y="{y_offset + 22}" class="lang-text" fill="{color}" text-anchor="start">{bar}</text>
+  <text x="125" y="{y_offset + 26}" class="lang-text bar-text" fill="{color}" text-anchor="start">{bar}</text>
   
   <!-- Percentage Text (Right Aligned) -->
-  <text x="590" y="{y_offset + 22}" class="lang-text pct-text">{pct:.1f}%</text>
+  <text x="590" y="{y_offset + 24}" class="lang-text pct-text">{pct:.1f}%</text>
 """
-        y_offset += 40
+        y_offset += 45
 
 svg_langs += "</svg>"
 
