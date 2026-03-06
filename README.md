@@ -23,22 +23,20 @@
 ### About Me
 
 <div align="center">
+<pre>
+<span style="color: #38bdae">$</span> <span style="color: #70a5fd">cat</span> <span style="color: #bb9af7">education.txt</span>
+<span style="color: #a9b1d6">> CS Undergrad @ <b>Amrita Vishwa Vidyapeetham</b>, Coimbatore</span>
 
-```bash
-$ cat education.txt
-> CS Undergrad @ Amrita Vishwa Vidyapeetham, Coimbatore
+<span style="color: #38bdae">$</span> <span style="color: #70a5fd">cat</span> <span style="color: #bb9af7">experience.txt</span>
+<span style="color: #a9b1d6">> <b>Website Development Head</b> @ Init Club</span>
+<span style="color: #a9b1d6">> Previously worked with <b>InCTF</b> & <b>Station-S</b></span>
 
-$ cat experience.txt
-> Website Development Head @ Init Club
-> Previously worked with InCTF & Station-S
+<span style="color: #38bdae">$</span> <span style="color: #70a5fd">cat</span> <span style="color: #bb9af7">interests.txt</span>
+<span style="color: #a9b1d6">> <b>Full-Stack Engineering</b> & <b>AI/ML</b></span>
 
-$ cat interests.txt
-> Full-Stack Engineering & AI/ML
-
-$ cat current_projects.txt
-> Building social platforms & domain-specific knowledge assistants
-```
-
+<span style="color: #38bdae">$</span> <span style="color: #70a5fd">cat</span> <span style="color: #bb9af7">current_projects.txt</span>
+<span style="color: #a9b1d6">> Building social platforms & domain-specific knowledge assistants</span>
+</pre>
 </div>
 
 <br/>
