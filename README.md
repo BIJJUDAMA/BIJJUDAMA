@@ -50,15 +50,17 @@
   <a href="https://github.com/BIJJUDAMA">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=BIJJUDAMA&theme=tokyonight&hide_border=true" alt="Nitansh's GitHub streak" />
   </a>
+</p>
+
 <br/>
 
-### Contribution Graph
+### 🐍 Contribution Graph
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/dist/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/dist/github-contribution-grid-snake.svg">
-    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/dist/github-contribution-grid-snake.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/github-contribution-grid-snake.svg">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/github-contribution-grid-snake.svg">
   </picture>
 </p>
 
