@@ -3,6 +3,9 @@ name: Generate Snake
 on:
   schedule:
     - cron: "0 * * * *"
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -28,9 +31,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          if ! git diff --staged --empty; then
+          if ! git diff --staged --quiet; then
             git commit -m "Update GitHub Stats in README"
             git push origin HEAD:${GITHUB_REF}
+          else
+            echo "No changes to commit"
           fi
           
       - name: Generate github-contribution-grid-snake.svg
