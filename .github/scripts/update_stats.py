@@ -99,12 +99,12 @@ for repo in data['repositories']['nodes']:
 # Sort and get top 5 languages
 sorted_langs = sorted(langs.items(), key=lambda x: x[1], reverse=True)[:5]
 
-# 1. Generate overview.svg (Glassmorphism style, White/Black text)
+# 1. Generate overview.svg (Glassmorphism style, White/Black text, Sharp)
 svg_overview = f"""<svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;display=swap');
-      .box {{ fill: rgba(26, 27, 38, 0.4); rx: 12px; stroke-width: 1.5px; stroke: rgba(255, 255, 255, 0.2); }}
+      .box {{ fill: rgba(26, 27, 38, 0.4); stroke-width: 1.5px; stroke: rgba(255, 255, 255, 0.2); }}
       .text {{ font-family: 'Fira Code', monospace; fill: #ffffff; text-anchor: middle; }}
       .title {{ font-size: 13px; font-weight: 500; text-transform: uppercase; }}
       .value {{ font-size: 26px; font-weight: 600; }}
@@ -154,11 +154,9 @@ svg_langs = f"""<svg width="600" height="{svg_height}" viewBox="0 0 600 {svg_hei
       .lang-text {{ font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; }}
       .badge-text {{ fill: #000000; text-anchor: middle; font-weight: 600; text-transform: uppercase; }}
       .pct-text {{ fill: #ffffff; text-anchor: end; }}
-      .bar-bg {{ fill: rgba(255, 255, 255, 0.1); rx: 5px; }}
       
       @media (prefers-color-scheme: light) {{
         .pct-text {{ fill: #000000; }}
-        .bar-bg {{ fill: rgba(0, 0, 0, 0.1); }}
       }}
     </style>
   </defs>
@@ -171,17 +169,18 @@ if total_size > 0:
         if pct < 1: continue 
         
         color = lang_colors.get(name, "#cccccc")
-        bar_max_width = 380
-        bar_width = (pct / 100.0) * bar_max_width
+        
+        filled = max(1, int(pct / 10))
+        empty = 10 - filled
+        bar = '█' * filled + '░' * empty
         
         svg_langs += f"""
-  <!-- Badge (Left Aligned) -->
-  <rect x="0" y="{y_offset + 5}" width="110" height="24" rx="12" fill="{color}" />
+  <!-- Badge (Left Aligned Sharp) -->
+  <rect x="0" y="{y_offset + 5}" width="110" height="24" fill="{color}" />
   <text x="55" y="{y_offset + 22}" class="lang-text badge-text">{name}</text>
   
-  <!-- Bar Background & Actual Bar -->
-  <rect x="140" y="{y_offset + 12}" width="{bar_max_width}" height="10" class="bar-bg" />
-  <rect x="140" y="{y_offset + 12}" width="{bar_width}" height="10" rx="5" fill="{color}" />
+  <!-- Unicode Bar Text (Right Aligned to Percentage) -->
+  <text x="520" y="{y_offset + 22}" class="lang-text" fill="{color}" text-anchor="end">{bar}</text>
   
   <!-- Percentage Text (Right Aligned) -->
   <text x="590" y="{y_offset + 22}" class="lang-text pct-text">{pct:.1f}%</text>
@@ -194,18 +193,17 @@ with open("languages.svg", "w", encoding="utf-8") as f:
     f.write(svg_langs)
 
 plain_text_md = f"""
-<div align="left">
+<div align="center">
   <br/>
   <img src="overview.svg" alt="GitHub Overview" style="max-width: 100%; height: auto;" />
 </div>
 
-<div align="right">
+<div align="left">
   <br/><br/>
   <h3 style="color: #bb9af7; margin-bottom: 5px;">Top Languages</h3>
-  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 25px; margin-left: auto; margin-right: 0;">
 </div>
 
-<div align="left">
+<div align="center">
   <img src="languages.svg" alt="Top Languages" style="max-width: 100%; height: auto;" />
   <br/>
 </div>
