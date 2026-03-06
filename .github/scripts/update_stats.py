@@ -143,51 +143,50 @@ svg_overview = f"""<svg width="600" height="250" viewBox="0 0 600 250" xmlns="ht
 with open("overview.svg", "w", encoding="utf-8") as f:
     f.write(svg_overview)
 
-# 2. Generate languages.svg (Left badges, right bars using SVG rects)
+# 2. Generate languages.svg (Left badges, right unicode bars — BIG)
 num_langs = min(5, sum(1 for n, s in sorted_langs if (s/total_size)*100 >= 1)) if total_size > 0 else 0
-svg_height = max(45, num_langs * 45)
+svg_height = max(50, num_langs * 50)
 
-svg_langs = f"""<svg width="600" height="{svg_height}" viewBox="0 0 600 {svg_height}" xmlns="http://www.w3.org/2000/svg">
+svg_langs = f"""<svg width="800" height="{svg_height}" viewBox="0 0 800 {svg_height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;display=swap');
       .lang-text {{ font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; }}
       .badge-text {{ fill: #000000; text-anchor: middle; font-weight: 600; text-transform: uppercase; }}
-      .pct-text {{ fill: #ffffff; text-anchor: end; }}
-      .bar-bg {{ fill: rgba(255, 255, 255, 0.08); }}
+      .bar-text {{ font-family: 'Fira Code', monospace; font-size: 28px; letter-spacing: -3px; }}
+      .pct-text {{ fill: #ffffff; text-anchor: end; font-size: 14px; }}
       
       @media (prefers-color-scheme: light) {{
         .pct-text {{ fill: #000000; }}
-        .bar-bg {{ fill: rgba(0, 0, 0, 0.08); }}
       }}
     </style>
   </defs>
 """
 
 y_offset = 0
-bar_max = 350
 if total_size > 0:
     for name, size in sorted_langs:
         pct = (size / total_size) * 100
         if pct < 1: continue 
         
         color = lang_colors.get(name, "#cccccc")
-        bar_width = (pct / 100.0) * bar_max
+        
+        filled = max(1, int((pct / 100) * 30))
+        empty = 30 - filled
+        bar = '█' * filled + '░' * empty
         
         svg_langs += f"""
   <!-- Badge -->
-  <rect x="0" y="{y_offset + 5}" width="110" height="28" fill="{color}" />
-  <text x="55" y="{y_offset + 24}" class="lang-text badge-text">{name}</text>
+  <rect x="0" y="{y_offset + 8}" width="120" height="30" fill="{color}" />
+  <text x="60" y="{y_offset + 28}" class="lang-text badge-text">{name}</text>
   
-  <!-- Bar Background (full width) -->
-  <rect x="125" y="{y_offset + 8}" width="{bar_max}" height="22" class="bar-bg" />
-  <!-- Actual Bar -->
-  <rect x="125" y="{y_offset + 8}" width="{bar_width}" height="22" fill="{color}" />
+  <!-- Unicode Bar -->
+  <text x="140" y="{y_offset + 35}" class="bar-text" fill="{color}">{bar}</text>
   
   <!-- Percentage -->
-  <text x="590" y="{y_offset + 24}" class="lang-text pct-text">{pct:.1f}%</text>
+  <text x="780" y="{y_offset + 28}" class="lang-text pct-text">{pct:.1f}%</text>
 """
-        y_offset += 45
+        y_offset += 50
 
 svg_langs += "</svg>"
 
