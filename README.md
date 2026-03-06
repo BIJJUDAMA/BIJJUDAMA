@@ -45,6 +45,19 @@
 
 <div align="center">
   <!--STATS_START-->
+<div align="center">
+  <h3>
+    <span style="color: #70a5fd">Total Stars Earned:</span> <b>1</b>
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <span style="color: #bb9af7">Public Repositories:</span> <b>6</b>
+    <br/><br/>
+    <span style="color: #38bdae">Issues Opened:</span> <b>14</b>
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <span style="color: #a9b1d6">Pull Requests:</span> <b>13</b>
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <span style="color: #70a5fd">Total Contributions:</span> <b>1156</b>
+  </h3>
+</div>
   <!--STATS_END-->
 </div>
 
