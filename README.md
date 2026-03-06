@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hi �, I'm Nitansh Shankar
+# Hi, I'm Nitansh Shankar
 
 ### Full-Stack Developer | AI/ML Enthusiast
 
@@ -20,17 +20,16 @@
 
 ---
 
-### 💫 About Me
+###  About Me
 
-- 🎓 Computer Science Undergraduate at **Amrita Vishwa Vidyapeetham**, India (2024 - Ongoing)
-- 💻 **Website Development Head** at Init Club | Previously at **InCTF** & **Station-S**
-- 🧠 Currently exploring the intersection of **Full-Stack Engineering & AI/ML**
-- 🚀 Always building something new, from social platforms to domain-specific knowledge assistants.
-- 🏆 Winner of SIH Internal Hackathon & State 2nd Place in Puducherry Shooting Competition!
+- Computer Science Undergraduate at **Amrita Vishwa Vidyapeetham**, Coimbatore
+-  **Website Development Head** at Init Club | Previously worked with **InCTF** & at **Station-S**
+-  Currently exploring the intersection of **Full-Stack Engineering & AI/ML**
+-  Always building something new, from social platforms to domain-specific knowledge assistants.
 
 <br/>
 
-### 🛠️ Tech Stack & Tools
+### Tech Stack & Tools
 
 <p align="center">
   <a href="https://skillicons.dev">
@@ -40,28 +39,9 @@
 
 <br/>
 
-### 🚀 Featured Projects
 
-<table>
-  <tr align="center">
-    <td width="33%">
-      <h3>📜 Dead Poets Society</h3>
-      <p>A full-stack social platform using Next.js, Supabase, and Tailwind CSS. Features Google OAuth, personalized feeds, and a moderation dashboard.</p>
-    </td>
-    <td width="33%">
-      <h3>🌿 Ayurveda RAG System</h3>
-      <p>Domain-Specific Knowledge Assistant built with LangChain, ChromaDB, and open-source models. Features a multi-stage semantic retrieval pipeline.</p>
-    </td>
-    <td width="33%">
-      <h3>🕳️ Pit (mini Git)</h3>
-      <p>A custom version control system in Python using content-addressable storage. Features a commit DAG, branching, merging, and diff engine.</p>
-    </td>
-  </tr>
-</table>
 
-<br/>
-
-### 📊 GitHub Stats
+### GitHub Stats
 
 <p align="center">
   <a href="https://github.com/BIJJUDAMA">
@@ -72,10 +52,15 @@
   </a>
 <br/>
 
-### 📈 Coding Activity
+### Contribution Graph
 
-<!--START_SECTION:waka-->
-<!--END_SECTION:waka-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/dist/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/dist/github-contribution-grid-snake.svg">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/BIJJUDAMA/BIJJUDAMA/output/dist/github-contribution-grid-snake.svg">
+  </picture>
+</p>
 
 <br/>
 
