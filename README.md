@@ -45,17 +45,18 @@
 <div align="center">
   <!--STATS_START-->
 <div align="center">
-  <h3>
-    <span style="color: #70a5fd">Total Stars Earned:</span> <b>1</b>
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="color: #bb9af7">Public Repositories:</span> <b>6</b>
-    <br/><br/>
-    <span style="color: #38bdae">Issues Opened:</span> <b>14</b>
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="color: #a9b1d6">Pull Requests:</span> <b>13</b>
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="color: #70a5fd">Total Contributions:</span> <b>1156</b>
-  </h3>
+  <br/>
+  <img src="overview.svg" alt="GitHub Overview" style="max-width: 100%; height: auto;" />
+</div>
+
+<div align="left">
+  <br/><br/>
+  <h3 style="color: #bb9af7; margin-bottom: 5px;">Top Languages</h3>
+</div>
+
+<div align="center">
+  <img src="languages.svg" alt="Top Languages" style="max-width: 100%; height: auto;" />
+  <br/>
 </div>
   <!--STATS_END-->
 </div>

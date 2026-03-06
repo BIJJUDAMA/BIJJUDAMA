@@ -1,0 +1,65 @@
+<svg width="800" height="250" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;display=swap');
+      .lang-text { font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; }
+      .badge-text { fill: #000000; text-anchor: middle; font-weight: 600; text-transform: uppercase; }
+      .bar-text { font-family: 'Fira Code', monospace; font-size: 28px; letter-spacing: -3px; }
+      .pct-text { fill: #ffffff; text-anchor: end; font-size: 14px; }
+      
+      @media (prefers-color-scheme: light) {
+        .pct-text { fill: #000000; }
+      }
+    </style>
+  </defs>
+
+  <!-- Badge -->
+  <rect x="0" y="8" width="120" height="30" fill="#f1e05a" />
+  <text x="60" y="28" class="lang-text badge-text">JavaScript</text>
+  
+  <!-- Unicode Bar -->
+  <text x="140" y="35" class="bar-text" fill="#f1e05a">███████████░░░░░░░░░░░░░░░░░░░</text>
+  
+  <!-- Percentage -->
+  <text x="780" y="28" class="lang-text pct-text">37.2%</text>
+
+  <!-- Badge -->
+  <rect x="0" y="58" width="120" height="30" fill="#3572A5" />
+  <text x="60" y="78" class="lang-text badge-text">Python</text>
+  
+  <!-- Unicode Bar -->
+  <text x="140" y="85" class="bar-text" fill="#3572A5">████████░░░░░░░░░░░░░░░░░░░░░░</text>
+  
+  <!-- Percentage -->
+  <text x="780" y="78" class="lang-text pct-text">28.0%</text>
+
+  <!-- Badge -->
+  <rect x="0" y="108" width="120" height="30" fill="#3178c6" />
+  <text x="60" y="128" class="lang-text badge-text">TypeScript</text>
+  
+  <!-- Unicode Bar -->
+  <text x="140" y="135" class="bar-text" fill="#3178c6">██████░░░░░░░░░░░░░░░░░░░░░░░░</text>
+  
+  <!-- Percentage -->
+  <text x="780" y="128" class="lang-text pct-text">20.9%</text>
+
+  <!-- Badge -->
+  <rect x="0" y="158" width="120" height="30" fill="#012456" />
+  <text x="60" y="178" class="lang-text badge-text">PowerShell</text>
+  
+  <!-- Unicode Bar -->
+  <text x="140" y="185" class="bar-text" fill="#012456">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+  
+  <!-- Percentage -->
+  <text x="780" y="178" class="lang-text pct-text">6.0%</text>
+
+  <!-- Badge -->
+  <rect x="0" y="208" width="120" height="30" fill="#89e051" />
+  <text x="60" y="228" class="lang-text badge-text">Shell</text>
+  
+  <!-- Unicode Bar -->
+  <text x="140" y="235" class="bar-text" fill="#89e051">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+  
+  <!-- Percentage -->
+  <text x="780" y="228" class="lang-text pct-text">5.0%</text>
+</svg>
