@@ -70,7 +70,14 @@
   <a href="https://github.com/BIJJUDAMA">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=BIJJUDAMA&theme=tokyonight&hide_border=true" alt="Nitansh's GitHub streak" />
   </a>
-</p>
+<br/>
+
+### 📈 Coding Activity
+
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
+
+<br/>
 
 <div align="center">
   <i>"Code is poetry."</i><br>
