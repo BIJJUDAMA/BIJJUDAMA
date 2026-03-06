@@ -44,8 +44,7 @@
 ### GitHub Stats
 
 <p align="center">
-  <!--STATS_START-->
-  <!--STATS_END-->
+  <img src="github_metrics.svg" alt="GitHub Metrics" />
 </p>
 
 <br/>
