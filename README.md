@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://nitansh.netlify.app/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#00CBCE" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/shankarnitansh/"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:shankarnitansh@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" /></a>
+ 
 </p>
 
 </div>
@@ -43,9 +43,10 @@
 
 ### GitHub Stats
 
-<p align="center">
-  <img src="github_metrics.svg" alt="GitHub Metrics" />
-</p>
+<div align="center">
+  <!--STATS_START-->
+  <!--STATS_END-->
+</div>
 
 <br/>
 
