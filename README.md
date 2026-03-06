@@ -20,12 +20,26 @@
 
 ---
 
-###  About Me
+### About Me
 
-- Computer Science Undergraduate at **Amrita Vishwa Vidyapeetham**, Coimbatore
--  **Website Development Head** at Init Club | Previously worked with **InCTF** & at **Station-S**
--  Currently exploring the intersection of **Full-Stack Engineering & AI/ML**
--  Always building something new, from social platforms to domain-specific knowledge assistants.
+<div align="center">
+
+```bash
+$ cat education.txt
+> CS Undergrad @ Amrita Vishwa Vidyapeetham, Coimbatore
+
+$ cat experience.txt
+> Website Development Head @ Init Club
+> Previously worked with InCTF & Station-S
+
+$ cat interests.txt
+> Full-Stack Engineering & AI/ML
+
+$ cat current_projects.txt
+> Building social platforms & domain-specific knowledge assistants
+```
+
+</div>
 
 <br/>
 
