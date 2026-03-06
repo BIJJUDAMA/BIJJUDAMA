@@ -99,102 +99,114 @@ for repo in data['repositories']['nodes']:
 # Sort and get top 5 languages
 sorted_langs = sorted(langs.items(), key=lambda x: x[1], reverse=True)[:5]
 
-# 1. Generate overview.svg (Glassmorphism style)
-svg = f"""<svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+# 1. Generate overview.svg (Glassmorphism style, White/Black text)
+svg_overview = f"""<svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;display=swap');
-      .box {{ fill: rgba(26, 27, 38, 0.4); rx: 12px; stroke-width: 1.5px; }}
-      .box-blue {{ stroke: rgba(112, 165, 253, 0.6); }}
-      .box-purple {{ stroke: rgba(187, 154, 247, 0.6); }}
-      .box-green {{ stroke: rgba(56, 189, 174, 0.6); }}
-      .box-cyan {{ stroke: rgba(169, 177, 214, 0.6); }}
-      
-      .title {{ font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; text-anchor: middle; }}
-      .title-blue {{ fill: #70a5fd; }}
-      .title-purple {{ fill: #bb9af7; }}
-      .title-green {{ fill: #38bdae; }}
-      .title-cyan {{ fill: #a9b1d6; }}
-      
-      .value {{ font-family: 'Fira Code', monospace; fill: #ffffff; font-size: 26px; font-weight: 600; text-anchor: middle; }}
+      .box {{ fill: rgba(26, 27, 38, 0.4); rx: 12px; stroke-width: 1.5px; stroke: rgba(255, 255, 255, 0.2); }}
+      .text {{ font-family: 'Fira Code', monospace; fill: #ffffff; text-anchor: middle; }}
+      .title {{ font-size: 13px; font-weight: 500; text-transform: uppercase; }}
+      .value {{ font-size: 26px; font-weight: 600; }}
       
       @media (prefers-color-scheme: light) {{
-        .value {{ fill: #1a1b26; }}
-        .box {{ fill: rgba(255, 255, 255, 0.6); }}
+        .text {{ fill: #000000; }}
+        .box {{ fill: rgba(0, 0, 0, 0.05); stroke: rgba(0, 0, 0, 0.2); }}
       }}
     </style>
   </defs>
 
   <!-- Row 1 -->
-  <rect x="50" y="20" width="240" height="60" class="box box-blue" />
-  <text x="170" y="42" class="title title-blue">TOTAL STARS EARNED</text>
-  <text x="170" y="68" class="value">{stars}</text>
+  <rect x="0" y="20" width="280" height="60" class="box" />
+  <text x="140" y="42" class="text title">TOTAL STARS EARNED</text>
+  <text x="140" y="68" class="text value">{stars}</text>
 
-  <rect x="310" y="20" width="240" height="60" class="box box-purple" />
-  <text x="430" y="42" class="title title-purple">PUBLIC REPOSITORIES</text>
-  <text x="430" y="68" class="value">{repos}</text>
+  <rect x="320" y="20" width="280" height="60" class="box" />
+  <text x="460" y="42" class="text title">PUBLIC REPOSITORIES</text>
+  <text x="460" y="68" class="text value">{repos}</text>
 
   <!-- Row 2 -->
-  <rect x="50" y="95" width="240" height="60" class="box box-green" />
-  <text x="170" y="117" class="title title-green">ISSUES OPENED</text>
-  <text x="170" y="143" class="value">{issues}</text>
+  <rect x="0" y="95" width="280" height="60" class="box" />
+  <text x="140" y="117" class="text title">ISSUES OPENED</text>
+  <text x="140" y="143" class="text value">{issues}</text>
 
-  <rect x="310" y="95" width="240" height="60" class="box box-cyan" />
-  <text x="430" y="117" class="title title-cyan">PULL REQUESTS</text>
-  <text x="430" y="143" class="value">{prs}</text>
+  <rect x="320" y="95" width="280" height="60" class="box" />
+  <text x="460" y="117" class="text title">PULL REQUESTS</text>
+  <text x="460" y="143" class="text value">{prs}</text>
 
   <!-- Row 3 -->
-  <rect x="180" y="170" width="240" height="60" class="box box-blue" />
-  <text x="300" y="192" class="title title-blue">ALL-TIME CONTRIBUTIONS</text>
-  <text x="300" y="218" class="value">{total_commits}</text>
+  <rect x="160" y="170" width="280" height="60" class="box" />
+  <text x="300" y="192" class="text title">ALL-TIME CONTRIBUTIONS</text>
+  <text x="300" y="218" class="text value">{total_commits}</text>
 </svg>"""
 
 with open("overview.svg", "w", encoding="utf-8") as f:
-    f.write(svg)
+    f.write(svg_overview)
 
-# 2. Generate Top Languages hybrid badges
-import urllib.parse
-lang_list = '<div align="center">\n'
+# 2. Generate languages.svg (Left badges, right bars)
+num_langs = min(5, sum(1 for n, s in sorted_langs if (s/total_size)*100 >= 1)) if total_size > 0 else 0
+svg_height = max(40, num_langs * 40)
 
+svg_langs = f"""<svg width="600" height="{svg_height}" viewBox="0 0 600 {svg_height}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;display=swap');
+      .lang-text {{ font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; }}
+      .badge-text {{ fill: #000000; text-anchor: middle; font-weight: 600; text-transform: uppercase; }}
+      .pct-text {{ fill: #ffffff; text-anchor: end; }}
+      .bar-bg {{ fill: rgba(255, 255, 255, 0.1); rx: 5px; }}
+      
+      @media (prefers-color-scheme: light) {{
+        .pct-text {{ fill: #000000; }}
+        .bar-bg {{ fill: rgba(0, 0, 0, 0.1); }}
+      }}
+    </style>
+  </defs>
+"""
+
+y_offset = 0
 if total_size > 0:
     for name, size in sorted_langs:
         pct = (size / total_size) * 100
         if pct < 1: continue 
         
-        color = lang_colors.get(name) or "#cccccc"
-        color_clean = color.replace('#', '')
+        color = lang_colors.get(name, "#cccccc")
+        bar_max_width = 380
+        bar_width = (pct / 100.0) * bar_max_width
         
-        filled = max(1, int(pct / 10))
-        empty = 10 - filled
-        bar = '█' * filled + '░' * empty
-        
-        # Shields.io needs - and _ to be duplicated
-        raw_name = name.replace('-', '--').replace('_', '__')
-        name_enc = urllib.parse.quote(raw_name)
-        
-        raw_msg = f"{bar} {pct:.1f}%".replace('-', '--').replace('_', '__')
-        msg_enc = urllib.parse.quote(raw_msg)
-        
-        logo = urllib.parse.quote(name.lower())
-        
-        url = f"https://img.shields.io/badge/{name_enc}-{msg_enc}-{color_clean}?style=for-the-badge&logo={logo}&logoColor=white"
-        lang_list += f'  <img src="{url}" alt="{name}" style="margin-bottom: 8px;"/><br/>\n'
+        svg_langs += f"""
+  <!-- Badge (Left Aligned) -->
+  <rect x="0" y="{y_offset + 5}" width="110" height="24" rx="12" fill="{color}" />
+  <text x="55" y="{y_offset + 22}" class="lang-text badge-text">{name}</text>
+  
+  <!-- Bar Background & Actual Bar -->
+  <rect x="140" y="{y_offset + 12}" width="{bar_max_width}" height="10" class="bar-bg" />
+  <rect x="140" y="{y_offset + 12}" width="{bar_width}" height="10" rx="5" fill="{color}" />
+  
+  <!-- Percentage Text (Right Aligned) -->
+  <text x="590" y="{y_offset + 22}" class="lang-text pct-text">{pct:.1f}%</text>
+"""
+        y_offset += 40
 
-lang_list += '</div>\n'
+svg_langs += "</svg>"
+
+with open("languages.svg", "w", encoding="utf-8") as f:
+    f.write(svg_langs)
 
 plain_text_md = f"""
-<div align="center">
+<div align="left">
   <br/>
-  <h3 style="color: #70a5fd; margin-bottom: 5px;">GitHub Overview</h3>
-  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 25px;">
-  
   <img src="overview.svg" alt="GitHub Overview" style="max-width: 100%; height: auto;" />
+</div>
 
-  <br/><br/><br/>
+<div align="right">
+  <br/><br/>
   <h3 style="color: #bb9af7; margin-bottom: 5px;">Top Languages</h3>
-  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 25px;">
-  
-{lang_list}
+  <hr style="width: 40%; border: 1px solid #292e42; margin-bottom: 25px; margin-left: auto; margin-right: 0;">
+</div>
+
+<div align="left">
+  <img src="languages.svg" alt="Top Languages" style="max-width: 100%; height: auto;" />
   <br/>
 </div>
 """

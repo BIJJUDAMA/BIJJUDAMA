@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add overview.svg README.md
+          git add overview.svg languages.svg README.md
           if ! git diff --staged --quiet; then
             git commit -m "Update GitHub Stats in README"
             git push origin HEAD:${GITHUB_REF}
