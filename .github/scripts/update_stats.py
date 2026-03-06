@@ -200,8 +200,8 @@ about_svg = """<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http:/
       .prompt { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; fill: #3fb950; }
       .cmd { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; fill: #58a6ff; }
       .file { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; fill: #d2a8ff; }
-      .output { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; fill: #8b949e; }
-      .bold { font-weight: 700; fill: #e6edf3; }
+      .output { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; fill: #8b949e; }
+      .bold { font-weight: 400; fill: #e6edf3; font-size: 14px; }
       .bg { fill: #0d1117; }
       .border { fill: none; stroke: #30363d; stroke-width: 1; }
 
@@ -247,7 +247,7 @@ about_svg = """<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http:/
   <text y="120">
     <tspan class="output" x="20">&gt; </tspan>
     <tspan class="bold">Website Development Head</tspan>
-    <tspan class="output"> @ Init Club</tspan>
+    <tspan class="output"> @ Init Club,</tspan>
   </text>
   <text y="138">
     <tspan class="output" x="20">&gt; Previously worked with </tspan>
