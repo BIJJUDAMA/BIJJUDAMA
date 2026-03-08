@@ -21,10 +21,10 @@
   <!-- Bar track -->
   <rect x="135" y="8" width="350" height="22" class="bar-bg" />
   <!-- Bar fill -->
-  <rect x="135" y="8" width="130.2343221082721" height="22" fill="#f1e05a" />
+  <rect x="135" y="8" width="139.93336905701466" height="22" fill="#f1e05a" />
   
   <!-- Percentage -->
-  <text x="580" y="24" class="lang-text pct-text">37.2%</text>
+  <text x="580" y="24" class="lang-text pct-text">40.0%</text>
 
   <!-- Badge -->
   <rect x="0" y="50" width="120" height="28" fill="#3572A5" />
@@ -33,10 +33,10 @@
   <!-- Bar track -->
   <rect x="135" y="53" width="350" height="22" class="bar-bg" />
   <!-- Bar fill -->
-  <rect x="135" y="53" width="97.87868910007272" height="22" fill="#3572A5" />
+  <rect x="135" y="53" width="93.55895177816622" height="22" fill="#3572A5" />
   
   <!-- Percentage -->
-  <text x="580" y="69" class="lang-text pct-text">28.0%</text>
+  <text x="580" y="69" class="lang-text pct-text">26.7%</text>
 
   <!-- Badge -->
   <rect x="0" y="95" width="120" height="28" fill="#3178c6" />
@@ -45,10 +45,10 @@
   <!-- Bar track -->
   <rect x="135" y="98" width="350" height="22" class="bar-bg" />
   <!-- Bar fill -->
-  <rect x="135" y="98" width="73.00656954439458" height="22" fill="#3178c6" />
+  <rect x="135" y="98" width="69.78452799372725" height="22" fill="#3178c6" />
   
   <!-- Percentage -->
-  <text x="580" y="114" class="lang-text pct-text">20.9%</text>
+  <text x="580" y="114" class="lang-text pct-text">19.9%</text>
 
   <!-- Badge -->
   <rect x="0" y="140" width="120" height="28" fill="#012456" />
@@ -57,10 +57,10 @@
   <!-- Bar track -->
   <rect x="135" y="143" width="350" height="22" class="bar-bg" />
   <!-- Bar fill -->
-  <rect x="135" y="143" width="20.872094481081216" height="22" fill="#012456" />
+  <rect x="135" y="143" width="19.950934151439874" height="22" fill="#012456" />
   
   <!-- Percentage -->
-  <text x="580" y="159" class="lang-text pct-text">6.0%</text>
+  <text x="580" y="159" class="lang-text pct-text">5.7%</text>
 
   <!-- Badge -->
   <rect x="0" y="185" width="120" height="28" fill="#89e051" />
@@ -69,8 +69,8 @@
   <!-- Bar track -->
   <rect x="135" y="188" width="350" height="22" class="bar-bg" />
   <!-- Bar fill -->
-  <rect x="135" y="188" width="17.517113412401894" height="22" fill="#89e051" />
+  <rect x="135" y="188" width="16.74402042070627" height="22" fill="#89e051" />
   
   <!-- Percentage -->
-  <text x="580" y="204" class="lang-text pct-text">5.0%</text>
+  <text x="580" y="204" class="lang-text pct-text">4.8%</text>
 </svg>
