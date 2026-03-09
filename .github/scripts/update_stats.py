@@ -62,8 +62,7 @@ if joined_years == 0: joined_years = 1
 issues = basic_data['issues']['totalCount']
 prs = basic_data['pullRequests']['totalCount']
 contrib_to = basic_data['repositoriesContributedTo']['totalCount']
-current_commits = basic_data['contributionsCollection']['contributionCalendar']['totalContributions'] + \
-                  basic_data['contributionsCollection']['restrictedContributionsCount']
+current_commits = basic_data['contributionsCollection']['contributionCalendar']['totalContributions']
 
 # Area chart data
 weeks = basic_data['contributionsCollection']['contributionCalendar']['weeks']
@@ -216,19 +215,21 @@ svg_stats = f'''<svg width="300" height="150" viewBox="0 0 300 150" xmlns="http:
   <text x="50" y="56" class="label">Total Stars: </text><text x="175" y="56" class="value">{stars}</text>
 
   <g transform="translate(25, 65)"><g class="icon">{icons['commit']}</g></g>
-  <text x="50" y="76" class="label">Commits (Last Year): </text><text x="175" y="76" class="value">{current_commits}</text>
+  <text x="50" y="76" class="label">Commits (Last Year): </text><text x="180" y="76" class="value">{current_commits}</text>
 
   <g transform="translate(25, 85)"><g class="icon">{icons['pr']}</g></g>
-  <text x="50" y="96" class="label">Total PRs: </text><text x="175" y="96" class="value">{prs}</text>
+  <text x="50" y="96" class="label">Total PRs: </text><text x="180" y="96" class="value">{prs}</text>
 
   <g transform="translate(25, 105)"><g class="icon">{icons['issue']}</g></g>
-  <text x="50" y="116" class="label">Total Issues: </text><text x="175" y="116" class="value">{issues}</text>
+  <text x="50" y="116" class="label">Total Issues: </text><text x="180" y="116" class="value">{issues}</text>
 
   <g transform="translate(25, 125)"><g class="icon">{icons['repo']}</g></g>
-  <text x="50" y="136" class="label">Contributed to: </text><text x="175" y="136" class="value">{contrib_to}</text>
+  <text x="50" y="136" class="label">Contributed to: </text><text x="180" y="136" class="value">{contrib_to}</text>
   
   <!-- GitHub Logo Silhouette -->
-  <path d="M220 50 C200 50 185 65 185 85 C185 100 195 112 208 117 C210 117 211 116 211 114 C211 113 211 110 211 106 C201 108 199 101 199 101 C197 97 194 95 194 95 C190 92 194 92 194 92 C198 93 201 96 201 96 C204 102 210 101 213 100 C213 97 214 96 215 95 C206 94 196 90 196 75 C196 71 198 68 200 65 C200 64 198 60 201 55 C201 55 204 54 211 59 C214 58 217 58 220 58 C223 58 226 58 229 59 C236 54 240 55 240 55 C242 60 240 64 240 65 C242 68 244 71 244 75 C244 90 234 94 225 95 C227 96 228 99 228 103 C228 108 228 113 228 114 C228 116 229 117 232 117 C245 113 255 100 255 85 C255 65 240 50 220 50 Z" fill="#24292e" opacity="0.8"/>
+  <g transform="translate(45, 0)">
+    <path d="M220 50 C200 50 185 65 185 85 C185 100 195 112 208 117 C210 117 211 116 211 114 C211 113 211 110 211 106 C201 108 199 101 199 101 C197 97 194 95 194 95 C190 92 194 92 194 92 C198 93 201 96 201 96 C204 102 210 101 213 100 C213 97 214 96 215 95 C206 94 196 90 196 75 C196 71 198 68 200 65 C200 64 198 60 201 55 C201 55 204 54 211 59 C214 58 217 58 220 58 C223 58 226 58 229 59 C236 54 240 55 240 55 C242 60 240 64 240 65 C242 68 244 71 244 75 C244 90 234 94 225 95 C227 96 228 99 228 103 C228 108 228 113 228 114 C228 116 229 117 232 117 C245 113 255 100 255 85 C255 65 240 50 220 50 Z" fill="#24292e" opacity="0.8"/>
+  </g>
 </svg>'''
 
 with open("1-stats.svg", "w", encoding="utf-8") as f:
