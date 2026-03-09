@@ -26,17 +26,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python .github/scripts/update_stats.py
         
-      - name: Commit Updated README
+      - name: Commit & Push changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add overview.svg languages.svg about.svg README.md
-          if ! git diff --staged --quiet; then
-            git commit -m "Update GitHub Stats in README"
-            git push origin HEAD:${GITHUB_REF}
-          else
-            echo "No changes to commit"
-          fi
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add 1-stats.svg 2-top-languages.svg 3-top-languages-by-commit.svg 0-profile-details.svg about.svg README.md
+          git commit -m "Generated GitHub Stats" || echo "No changes to commit"
+          git push origin HEAD:${GITHUB_REF}
           
       - name: Generate github-contribution-grid-snake.svg
         uses: Platane/snk/svg-only@v3

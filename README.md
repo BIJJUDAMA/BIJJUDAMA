@@ -46,17 +46,11 @@
   <!--STATS_START-->
 <div align="center">
   <br/>
-  <img src="overview.svg" alt="GitHub Overview" style="max-width: 100%; height: auto;" />
-</div>
-
-<div align="left">
-  <br/><br/>
-  <h3 style="color: #bb9af7; margin-bottom: 5px;">Top Languages</h3>
-</div>
-
-<div align="center">
-  <img src="languages.svg" alt="Top Languages" style="max-width: 100%; height: auto;" />
+  <img src="1-stats.svg" alt="Stats" />
+  <img src="2-top-languages.svg" alt="Top Languages by Repo" />
+  <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" />
   <br/>
+  <img src="0-profile-details.svg" alt="Profile Details" />
 </div>
   <!--STATS_END-->
 </div>
