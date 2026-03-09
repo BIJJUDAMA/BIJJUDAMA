@@ -198,7 +198,7 @@ svg_stats = f'''<svg width="300" height="150" viewBox="0 0 300 150" xmlns="http:
   <text x="25" y="25" class="title">Stats</text>
   
   <text x="25" y="55" class="label">⭐ Total Stars: </text><text x="140" y="55" class="value">{stars}</text>
-  <text x="25" y="75" class="label">⭕ {current_year} Commits: </text><text x="140" y="75" class="value">{current_commits}</text>
+  <text x="25" y="75" class="label">⭕ Commits (Last Year): </text><text x="140" y="75" class="value">{current_commits}</text>
   <text x="25" y="95" class="label">🔄 Total PRs: </text><text x="140" y="95" class="value">{prs}</text>
   <text x="25" y="115" class="label">❗ Total Issues: </text><text x="140" y="115" class="value">{issues}</text>
   <text x="25" y="135" class="label">📦 Contributed to: </text><text x="140" y="135" class="value">{contrib_to}</text>
@@ -247,7 +247,7 @@ svg_profile = f'''<svg width="900" height="250" viewBox="0 0 900 250" xmlns="htt
   
   <text x="30" y="50" class="title">{USERNAME} ({name})</text>
   
-  <text x="50" y="110" class="label">🏢 {current_commits} Contributions in {current_year}</text>
+  <text x="50" y="110" class="label">🏢 {current_commits} contributions in last year</text>
   <text x="50" y="145" class="label">📦 {repos_count} Public Repos</text>
   <text x="50" y="180" class="label">🕒 Joined GitHub {joined_years} years ago</text>
   <text x="50" y="215" class="label">🎓 {company}</text>
