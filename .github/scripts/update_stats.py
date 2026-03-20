@@ -135,12 +135,13 @@ top_langs_repo = sorted(langs_by_repo.items(), key=lambda x: x[1], reverse=True)
 top_langs_commit = sorted(langs_by_commit.items(), key=lambda x: x[1], reverse=True)[:5]
 
 theme = {
-    'bg': '#0d1117',
-    'border': '#30363d',
-    'title': '#58a6ff',
-    'text': '#8b949e',
-    'value': '#c9d1d9',
-    'icon': '#58a6ff'
+    'shadow': '#000000',
+    'bg': '#0a0a0a',
+    'surface': '#141414',
+    'accent': '#ff0000',
+    'border': '#333333',
+    'muted': '#666666',
+    'white': '#fafafa'
 }
 
 icons = {
@@ -159,19 +160,32 @@ icons = {
 
 def generate_donut(data, title):
     total = sum(d[1] for d in data)
-    svg = f'''<svg width="300" height="150" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+    w, h = 300, 150
+    shadow_offset = 8
+    canvas_w = w + shadow_offset
+    canvas_h = h + shadow_offset
+    
+    svg = f'''<svg width="{canvas_w}" height="{canvas_h}" viewBox="0 0 {canvas_w} {canvas_h}" xmlns="http://www.w3.org/2000/svg">
     <style>
-        .title {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: {theme['title']}; font-size: 14px; font-weight: 600; }}
-        .label {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: {theme['value']}; font-size: 12px; }}
-        .bg {{ fill: {theme['bg']}; stroke: {theme['border']}; stroke-width: 1; }}
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+        .title {{ font-family: 'Space Grotesk', system-ui; fill: {theme['white']}; font-size: 15px; font-weight: 700; letter-spacing: 0.05em; }}
+        .label {{ font-family: 'JetBrains Mono', monospace; fill: {theme['muted']}; font-size: 11px; }}
+        .value {{ font-family: 'JetBrains Mono', monospace; fill: {theme['white']}; font-size: 11px; font-weight: 600; }}
+        .bg {{ fill: {theme['surface']}; stroke: {theme['border']}; stroke-width: 2; }}
+        .shadow {{ fill: {theme['shadow']}; }}
     </style>
-    <rect width="300" height="150" class="bg" rx="6" />
-    <text x="25" y="25" class="title">{title}</text>
+    <!-- Brutalist Shadow -->
+    <rect x="{shadow_offset}" y="{shadow_offset}" width="{w}" height="{h}" class="shadow" />
+    <!-- Foreground Background -->
+    <rect width="{w}" height="{h}" class="bg" />
+    
+    <text x="25" y="30" class="title">{title.upper()}</text>
+    <line x1="25" y1="36" x2="140" y2="36" stroke="{theme['accent']}" stroke-width="2" />
     '''
     
-    cx, cy, radius, stroke_width = 220, 85, 40, 15
+    cx, cy, radius, stroke_width = 210, 85, 40, 12
     current_angle = 0
-    y_offset = 50
+    y_offset = 58
     for name_l, val in data:
         pct = (val / total) * 100 if total > 0 else 0
         angle = (val / total) * 360 if total > 0 else 0
@@ -192,44 +206,45 @@ def generate_donut(data, title):
         
         svg += f'''
         <rect x="25" y="{y_offset - 8}" width="8" height="8" fill="{lang_colors.get(name_l, '#ccc')}" />
-        <text x="40" y="{y_offset}" class="label">{name_l} {pct:.1f}%</text>
+        <text x="40" y="{y_offset}" class="label">{name_l} <tspan fill="{theme['white']}" class="value">{pct:.1f}%</tspan></text>
         '''
         y_offset += 16
         
     svg += '</svg>'
     return svg
 
+
 # 1. Stats SVG
-svg_stats = f'''<svg width="300" height="150" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+svg_stats = f'''<svg width="308" height="158" viewBox="0 0 308 158" xmlns="http://www.w3.org/2000/svg">
   <style>
-      .title {{ font-family: -apple-system, sans-serif; fill: {theme['title']}; font-size: 14px; font-weight: 600; }}
-      .label {{ font-family: -apple-system, sans-serif; fill: {theme['text']}; font-size: 13px; }}
-      .value {{ font-family: -apple-system, sans-serif; fill: {theme['value']}; font-size: 13px; font-weight: 600; }}
-      .bg {{ fill: {theme['bg']}; stroke: {theme['border']}; stroke-width: 1; }}
-      .icon {{ fill: {theme['icon']}; }}
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+      .title {{ font-family: 'Space Grotesk', sans-serif; fill: {theme['white']}; font-size: 15px; font-weight: 700; letter-spacing: 0.05em; }}
+      .label {{ font-family: 'JetBrains Mono', sans-serif; fill: {theme['muted']}; font-size: 11px; }}
+      .value {{ font-family: 'JetBrains Mono', sans-serif; fill: {theme['white']}; font-size: 11px; font-weight: 600; }}
+      .bg {{ fill: {theme['surface']}; stroke: {theme['border']}; stroke-width: 2; }}
+      .shadow {{ fill: {theme['shadow']}; }}
+      .icon {{ fill: {theme['accent']}; }}
   </style>
-  <rect width="300" height="150" class="bg" rx="6" />
-  <text x="25" y="25" class="title">Stats</text>
+  <rect x="8" y="8" width="300" height="150" class="shadow" />
+  <rect width="300" height="150" class="bg" />
   
-  <g transform="translate(25, 45)"><g class="icon">{icons['star']}</g></g>
-  <text x="50" y="56" class="label">Total Stars: </text><text x="175" y="56" class="value">{stars}</text>
-
-  <g transform="translate(25, 65)"><g class="icon">{icons['commit']}</g></g>
-  <text x="50" y="76" class="label">Commits (Last Year): </text><text x="180" y="76" class="value">{current_commits}</text>
-
-  <g transform="translate(25, 85)"><g class="icon">{icons['pr']}</g></g>
-  <text x="50" y="96" class="label">Total PRs: </text><text x="180" y="96" class="value">{prs}</text>
-
-  <g transform="translate(25, 105)"><g class="icon">{icons['issue']}</g></g>
-  <text x="50" y="116" class="label">Total Issues: </text><text x="180" y="116" class="value">{issues}</text>
-
-  <g transform="translate(25, 125)"><g class="icon">{icons['repo']}</g></g>
-  <text x="50" y="136" class="label">Contributed to: </text><text x="180" y="136" class="value">{contrib_to}</text>
+  <text x="25" y="30" class="title">STATS</text>
+  <line x1="25" y1="36" x2="80" y2="36" stroke="{theme['accent']}" stroke-width="2" />
   
-  <!-- GitHub Logo Silhouette -->
-  <g transform="translate(45, 0)">
-    <path d="M220 50 C200 50 185 65 185 85 C185 100 195 112 208 117 C210 117 211 116 211 114 C211 113 211 110 211 106 C201 108 199 101 199 101 C197 97 194 95 194 95 C190 92 194 92 194 92 C198 93 201 96 201 96 C204 102 210 101 213 100 C213 97 214 96 215 95 C206 94 196 90 196 75 C196 71 198 68 200 65 C200 64 198 60 201 55 C201 55 204 54 211 59 C214 58 217 58 220 58 C223 58 226 58 229 59 C236 54 240 55 240 55 C242 60 240 64 240 65 C242 68 244 71 244 75 C244 90 234 94 225 95 C227 96 228 99 228 103 C228 108 228 113 228 114 C228 116 229 117 232 117 C245 113 255 100 255 85 C255 65 240 50 220 50 Z" fill="#24292e" opacity="0.8"/>
-  </g>
+  <g transform="translate(25, 48)"><g class="icon" transform="scale(0.8)">{icons['star']}</g></g>
+  <text x="45" y="60" class="label">Stars: </text><text x="160" y="60" class="value">{stars}</text>
+
+  <g transform="translate(25, 68)"><g class="icon" transform="scale(0.8)">{icons['commit']}</g></g>
+  <text x="45" y="80" class="label">Commits: </text><text x="160" y="80" class="value">{current_commits}</text>
+
+  <g transform="translate(25, 88)"><g class="icon" transform="scale(0.8)">{icons['pr']}</g></g>
+  <text x="45" y="100" class="label">PRs: </text><text x="160" y="100" class="value">{prs}</text>
+
+  <g transform="translate(25, 108)"><g class="icon" transform="scale(0.8)">{icons['issue']}</g></g>
+  <text x="45" y="120" class="label">Issues: </text><text x="160" y="120" class="value">{issues}</text>
+
+  <g transform="translate(25, 128)"><g class="icon" transform="scale(0.8)">{icons['repo']}</g></g>
+  <text x="45" y="140" class="label">Contributed: </text><text x="160" y="140" class="value">{contrib_to}</text>
 </svg>'''
 
 with open("1-stats.svg", "w", encoding="utf-8") as f:
@@ -242,6 +257,7 @@ with open("2-top-languages.svg", "w", encoding="utf-8") as f:
 # 3. Languages Commit
 with open("3-top-languages-by-commit.svg", "w", encoding="utf-8") as f:
     f.write(generate_donut(top_langs_commit, "Top Languages by Commit"))
+
 
 # 4. Profile Details SVG
 points = []
@@ -259,90 +275,102 @@ if len(weekly_contrib) > 0:
 else:
     path_d = ""
 
-svg_profile = f'''<svg width="900" height="250" viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg">
+svg_profile = f'''<svg width="908" height="258" viewBox="0 0 908 258" xmlns="http://www.w3.org/2000/svg">
   <style>
-      .title {{ font-family: -apple-system, sans-serif; fill: {theme['title']}; font-size: 24px; font-weight: 500; }}
-      .label {{ font-family: -apple-system, sans-serif; fill: {theme['text']}; font-size: 16px; }}
-      .bg {{ fill: {theme['bg']}; stroke: {theme['border']}; stroke-width: 1; }}
-      .chart-fill {{ fill: #3fb950; opacity: 0.8; }}
-      .axis {{ stroke: #30363d; stroke-width: 1; }}
-      .axis-label {{ font-family: -apple-system, sans-serif; fill: {theme['text']}; font-size: 14px; font-weight: 500; }}
-      .icon {{ fill: {theme['text']}; }}
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+      .title {{ font-family: 'Space Grotesk', sans-serif; fill: {theme['white']}; font-size: 24px; font-weight: 700; letter-spacing: 0.05em; }}
+      .label {{ font-family: 'JetBrains Mono', sans-serif; fill: {theme['muted']}; font-size: 13px; }}
+      .value {{ font-family: 'JetBrains Mono', sans-serif; fill: {theme['white']}; font-size: 13px; font-weight: 600; }}
+      .bg {{ fill: {theme['surface']}; stroke: {theme['border']}; stroke-width: 2; }}
+      .shadow {{ fill: {theme['shadow']}; }}
+      .chart-fill {{ fill: {theme['accent']}; opacity: 0.15; stroke: {theme['accent']}; stroke-width: 2; }}
+      .axis {{ stroke: {theme['border']}; stroke-width: 1; stroke-dasharray: 2 2; }}
+      .axis-label {{ font-family: 'JetBrains Mono', sans-serif; fill: {theme['muted']}; font-size: 12px; }}
+      .icon {{ fill: {theme['accent']}; }}
   </style>
-  <rect width="900" height="250" class="bg" rx="6" />
+  <rect x="8" y="8" width="900" height="250" class="shadow" />
+  <rect width="900" height="250" class="bg" />
   
   <text x="30" y="50" class="title">{USERNAME} ({name})</text>
+  <line x1="30" y1="60" x2="300" y2="60" stroke="{theme['accent']}" stroke-width="2" />
   
-  <g transform="translate(30, 95)"><g class="icon">{icons['activity']}</g></g>
-  <text x="55" y="108" class="label">{current_commits} contributions in the last year</text>
+  <g transform="translate(30, 95)"><g class="icon" transform="scale(0.9)">{icons['activity']}</g></g>
+  <text x="55" y="108" class="label">Contributions: <tspan class="value">{current_commits}</tspan></text>
 
-  <g transform="translate(30, 130)"><g class="icon">{icons['repo']}</g></g>
-  <text x="55" y="143" class="label">{repos_count} Public Repos</text>
+  <g transform="translate(30, 130)"><g class="icon" transform="scale(0.9)">{icons['repo']}</g></g>
+  <text x="55" y="143" class="label">Public Repos: <tspan class="value">{repos_count}</tspan></text>
 
-  <g transform="translate(30, 165)"><g class="icon">{icons['clock']}</g></g>
-  <text x="55" y="178" class="label">Joined GitHub {joined_years} years ago</text>
+  <g transform="translate(30, 165)"><g class="icon" transform="scale(0.9)">{icons['clock']}</g></g>
+  <text x="55" y="178" class="label">Joined GitHub: <tspan class="value">{joined_years} years ago</tspan></text>
 
-  <g transform="translate(30, 200)"><g class="icon">{icons['institution']}</g></g>
-  <text x="55" y="213" class="label">{company}</text>
+  <g transform="translate(30, 200)"><g class="icon" transform="scale(0.9)">{icons['institution']}</g></g>
+  <text x="55" y="213" class="label">Company: <tspan class="value">{company}</tspan></text>
   
-  <text x="605" y="55" class="axis-label" text-anchor="middle">Contributions in the Last Year</text>
+  <text x="605" y="45" class="axis-label" text-anchor="middle" fill="{theme['white']}">CONTRIBUTIONS ACTIVITY</text>
   
   <path d="{path_d}" class="chart-fill"/>
   <line x1="{x_start}" y1="{y_start}" x2="{x_start+chart_w}" y2="{y_start}" class="axis" />
   
   <line x1="{x_start+chart_w}" y1="{y_start}" x2="{x_start+chart_w}" y2="{y_start-chart_h}" class="axis" />
-  <text x="{x_start+chart_w+10}" y="{y_start}" class="axis-label" fill="{theme['text']}">0</text>
-  <text x="{x_start+chart_w+10}" y="{y_start - chart_h/2}" class="axis-label" fill="{theme['text']}">{max_contrib//2}</text>
-  <text x="{x_start+chart_w+10}" y="{y_start - chart_h}" class="axis-label" fill="{theme['text']}">{max_contrib}</text>
+  <text x="{x_start+chart_w+10}" y="{y_start}" class="axis-label" fill="{theme['muted']}">{0}</text>
+  <text x="{x_start+chart_w+10}" y="{y_start - chart_h/2}" class="axis-label" fill="{theme['muted']}">{max_contrib//2}</text>
+  <text x="{x_start+chart_w+10}" y="{y_start - chart_h}" class="axis-label" fill="{theme['muted']}">{max_contrib}</text>
 </svg>'''
 
 with open("0-profile-details.svg", "w", encoding="utf-8") as f:
     f.write(svg_profile)
 
 # 5. About Terminal SVG
-advanced_svg = """<svg width="600" height="230" viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg">
+advanced_svg = f"""<svg width="608" height="238" viewBox="0 0 608 238" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .prompt { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #3fb950; }
-      .cmd { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #58a6ff; }
-      .file { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #d2a8ff; }
-      .output { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #8b949e; }
-      .bold { font-weight: 600; fill: #e6edf3; font-size: 14px; }
-      .bg { fill: #0d1117; }
-      .border { fill: none; stroke: #30363d; stroke-width: 1; }
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;display=swap');
+      .prompt {{ font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: {theme['accent']}; font-weight: 600; }}
+      .cmd {{ font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: {theme['white']}; }}
+      .file {{ font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: {theme['muted']}; }}
+      .output {{ font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: {theme['white']}; opacity: 0.85; }}
+      .bold {{ font-weight: 600; fill: {theme['white']}; font-size: 14px; }}
+      .bg {{ fill: {theme['surface']}; }}
+      .border {{ fill: none; stroke: {theme['border']}; stroke-width: 2; }}
+      .shadow {{ fill: {theme['shadow']}; }}
 
-      .cursor { fill: #c9d1d9; font-family: ui-monospace, SFMono-Regular, monospace; font-size: 14px; animation: blink 1s step-end infinite; }
-      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+      .cursor {{ fill: {theme['white']}; font-family: 'JetBrains Mono', monospace; font-size: 14px; animation: blink 1s step-end infinite; }}
+      @keyframes blink {{ 0%, 100% {{ opacity: 1; }} 50% {{ opacity: 0; }} }}
 
-      .type-mask { fill: #0d1117; animation: slide 1.5s steps(40, end) forwards; }
-      .type-mask-1 { animation-delay: 0.5s; }
-      .type-mask-2 { animation-delay: 1.5s; }
-      .type-mask-3 { animation-delay: 2.0s; }
-      .type-mask-4 { animation-delay: 3.0s; }
-      .type-mask-5 { animation-delay: 3.2s; }
-      .type-mask-6 { animation-delay: 4.5s; }
-      .type-mask-7 { animation-delay: 5.5s; }
+      .type-mask {{ fill: {theme['surface']}; animation: slide 1.5s steps(40, end) forwards; }}
+      .type-mask-1 {{ animation-delay: 0.5s; }}
+      .type-mask-2 {{ animation-delay: 1.5s; }}
+      .type-mask-3 {{ animation-delay: 2.0s; }}
+      .type-mask-4 {{ animation-delay: 3.0s; }}
+      .type-mask-5 {{ animation-delay: 3.2s; }}
+      .type-mask-6 {{ animation-delay: 4.5s; }}
+      .type-mask-7 {{ animation-delay: 5.5s; }}
       
-      @keyframes slide { to { transform: translateX(550px); } }
+      @keyframes slide {{ to {{ transform: translateX(550px); }} }}
       
-      .hide { opacity: 0; animation: fadein 0.1s forwards; }
-      .delay-1 { animation-delay: 0s; }
-      .delay-2 { animation-delay: 1.5s; }
-      .delay-3 { animation-delay: 2.0s; }
-      .delay-4 { animation-delay: 3.0s; }
-      .delay-6 { animation-delay: 4.5s; }
-      .delay-7 { animation-delay: 5.5s; }
-      .delay-8 { animation-delay: 7.0s; }
-      @keyframes fadein { to { opacity: 1; } }
+      .hide {{ opacity: 0; animation: fadein 0.1s forwards; }}
+      .delay-1 {{ animation-delay: 0s; }}
+      .delay-2 {{ animation-delay: 1.5s; }}
+      .delay-3 {{ animation-delay: 2.0s; }}
+      .delay-4 {{ animation-delay: 3.0s; }}
+      .delay-6 {{ animation-delay: 4.5s; }}
+      .delay-7 {{ animation-delay: 5.5s; }}
+      .delay-8 {{ animation-delay: 7.0s; }}
+      @keyframes fadein {{ to {{ opacity: 1; }} }}
     </style>
   </defs>
 
-  <rect width="600" height="230" class="bg" rx="6" />
-  <rect width="600" height="230" class="border" rx="6" />
+  <!-- Shadow -->
+  <rect x="8" y="8" width="600" height="230" class="shadow" />
+  <!-- Main -->
+  <rect width="600" height="230" class="bg" fill="{theme['surface']}" />
+  <rect width="600" height="230" class="border" />
 
-  <circle cx="20" cy="16" r="5" fill="#ff5f57" />
-  <circle cx="38" cy="16" r="5" fill="#febc2e" />
-  <circle cx="56" cy="16" r="5" fill="#28c840" />
+  <g transform="translate(10, 10)">
+    <circle cx="10" cy="6" r="5" fill="#ff5f57" />
+    <circle cx="28" cy="6" r="5" fill="#febc2e" />
+    <circle cx="46" cy="6" r="5" fill="#28c840" />
+  </g>
 
   <!-- Block 1 -->
   <g class="hide delay-1">
