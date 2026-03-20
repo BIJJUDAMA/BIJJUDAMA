@@ -304,7 +304,7 @@ svg_profile = f'''<svg width="908" height="258" viewBox="0 0 908 258" xmlns="htt
   <text x="55" y="178" class="label">Joined GitHub: <tspan class="value">{joined_years} years ago</tspan></text>
 
   <g transform="translate(30, 200)"><g class="icon" transform="scale(0.9)">{icons['institution']}</g></g>
-  <text x="55" y="213" class="label">Company: <tspan class="value">{company}</tspan></text>
+  <text x="55" y="213" class="label">Studying At: <tspan class="value">{company}</tspan></text>
   
   <text x="605" y="45" class="axis-label" text-anchor="middle" fill="{theme['white']}">CONTRIBUTIONS ACTIVITY</text>
   
