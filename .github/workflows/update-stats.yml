@@ -30,7 +30,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add 1-stats.svg 2-top-languages.svg 3-top-languages-by-commit.svg 0-profile-details.svg about.svg README.md
+          git add 1-stats.svg 2-top-languages.svg 3-top-languages-by-commit.svg 0-profile-details.svg about.svg stats.txt README.md
           git commit -m "Generated GitHub Stats" || echo "No changes to commit"
           git push origin HEAD:${GITHUB_REF}
           
