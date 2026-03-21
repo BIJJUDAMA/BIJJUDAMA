@@ -1,0 +1,29 @@
+GitHub Statistics for BIJJUDAMA (Nitansh Shankar)
+Generated on: 2026-03-21 10:50:18 UTC
+
+General Stats:
+--------------
+Stars: 2
+Commits: 809
+PRs: 14
+Issues: 14
+Contributed To: 5
+Public Repos: 6
+Joined GitHub: 2 years ago
+Studying At: Amrita Vishwa Vidyapeetham
+
+Top Languages (by Repo Size):
+-----------------------------
+- JavaScript: 41.4%
+- Python: 27.4%
+- TypeScript: 20.4%
+- PowerShell: 5.8%
+- Shell: 4.9%
+
+Top Languages (by Commits):
+---------------------------
+- JavaScript: 50.7%
+- Python: 27.4%
+- PowerShell: 8.5%
+- Shell: 7.2%
+- TypeScript: 6.2%
