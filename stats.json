@@ -1,0 +1,33 @@
+{
+  "user": {
+    "login": "BIJJUDAMA",
+    "name": "Nitansh Shankar",
+    "company": "Amrita Vishwa Vidyapeetham",
+    "joined_years_ago": 2
+  },
+  "stats": {
+    "stars": 2,
+    "commits": 810,
+    "prs": 14,
+    "issues": 14,
+    "contributed_to": 5,
+    "public_repos": 6
+  },
+  "languages": {
+    "by_repo_size": {
+      "JavaScript": 41.4,
+      "Python": 27.4,
+      "TypeScript": 20.4,
+      "PowerShell": 5.8,
+      "Shell": 4.9
+    },
+    "by_commits": {
+      "JavaScript": 50.7,
+      "Python": 27.4,
+      "PowerShell": 8.5,
+      "Shell": 7.2,
+      "TypeScript": 6.2
+    }
+  },
+  "generated_at": "2026-03-21T10:53:27.084970"
+}
