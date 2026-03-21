@@ -423,39 +423,33 @@ advanced_svg = f"""<svg width="608" height="238" viewBox="0 0 608 238" xmlns="ht
 with open("about.svg", "w", encoding="utf-8") as f:
     f.write(advanced_svg)
 
-# 6. Output to TXT
-stats_text = f"""GitHub Statistics for {USERNAME} ({name})
-Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC")}
-
-General Stats:
---------------
-Stars: {stars}
-Commits: {current_commits}
-PRs: {prs}
-Issues: {issues}
-Contributed To: {contrib_to}
-Public Repos: {repos_count}
-Joined GitHub: {joined_years} years ago
-Studying At: {company}
-
-Top Languages (by Repo Size):
------------------------------
-"""
+# 6. Output to JSON
 total_repo_size = sum(d[1] for d in top_langs_repo)
-for lang, size in top_langs_repo:
-    pct = (size / total_repo_size) * 100 if total_repo_size > 0 else 0
-    stats_text += f"- {lang}: {pct:.1f}%\n"
-
-stats_text += """
-Top Languages (by Commits):
----------------------------
-"""
 total_commit_val = sum(d[1] for d in top_langs_commit)
-for lang, val in top_langs_commit:
-    pct = (val / total_commit_val) * 100 if total_commit_val > 0 else 0
-    stats_text += f"- {lang}: {pct:.1f}%\n"
 
-with open("stats.txt", "w", encoding="utf-8") as f:
-    f.write(stats_text)
+stats_data = {
+    "user": {
+        "login": USERNAME,
+        "name": name,
+        "company": company,
+        "joined_years_ago": joined_years
+    },
+    "stats": {
+        "stars": stars,
+        "commits": current_commits,
+        "prs": prs,
+        "issues": issues,
+        "contributed_to": contrib_to,
+        "public_repos": repos_count
+    },
+    "languages": {
+        "by_repo_size": {lang: round((size / total_repo_size) * 100, 1) if total_repo_size > 0 else 0 for lang, size in top_langs_repo},
+        "by_commits": {lang: round((val / total_commit_val) * 100, 1) if total_commit_val > 0 else 0 for lang, val in top_langs_commit}
+    },
+    "generated_at": datetime.datetime.now().isoformat()
+}
+
+with open("stats.json", "w", encoding="utf-8") as f:
+    json.dump(stats_data, f, indent=2)
 
 
