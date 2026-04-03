@@ -23,10 +23,10 @@
         <path d="M 305.9353711619546 141.53183885752128 A 48 48 0 0 1 282.0781906023013 97.26135360978542" fill="none" stroke="#3572A5" stroke-width="14" />
         <rect x="25" y="94" width="8" height="8" fill="#3572A5" />
         <text x="40" y="102" class="label">Python <tspan fill="#fafafa" class="value">17.6%</tspan></text>
-        <path d="M 282.0781906023013 97.26135360978542 A 48 48 0 0 1 301.4323667046126 61.42681854059384" fill="none" stroke="#dea584" stroke-width="14" />
+        <path d="M 282.0781906023013 97.26135360978542 A 48 48 0 0 1 301.4323667046126 61.42681854059385" fill="none" stroke="#dea584" stroke-width="14" />
         <rect x="25" y="110" width="8" height="8" fill="#dea584" />
         <text x="40" y="118" class="label">Rust <tspan fill="#fafafa" class="value">13.9%</tspan></text>
-        <path d="M 301.4323667046126 61.42681854059384 A 48 48 0 0 1 330.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
+        <path d="M 301.4323667046126 61.42681854059385 A 48 48 0 0 1 330.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
         <rect x="25" y="126" width="8" height="8" fill="#663399" />
         <text x="40" y="134" class="label">CSS <tspan fill="#fafafa" class="value">10.1%</tspan></text>
         </svg>
