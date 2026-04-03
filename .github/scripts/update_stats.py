@@ -219,7 +219,7 @@ icons = {
 
 def generate_donut(data, title):
     total = sum(d[1] for d in data)
-    w, h = 300, 150
+    w, h = 446, 170
     shadow_offset = 8
     canvas_w = w + shadow_offset
     canvas_h = h + shadow_offset
@@ -227,9 +227,9 @@ def generate_donut(data, title):
     svg = f'''<svg width="{canvas_w}" height="{canvas_h}" viewBox="0 0 {canvas_w} {canvas_h}" xmlns="http://www.w3.org/2000/svg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
-        .title {{ font-family: 'Space Grotesk', system-ui; fill: {theme['white']}; font-size: 15px; font-weight: 700; letter-spacing: 0.05em; }}
-        .label {{ font-family: 'JetBrains Mono', monospace; fill: {theme['muted']}; font-size: 11px; }}
-        .value {{ font-family: 'JetBrains Mono', monospace; fill: {theme['white']}; font-size: 11px; font-weight: 600; }}
+        .title {{ font-family: 'Space Grotesk', system-ui; fill: {theme['white']}; font-size: 16px; font-weight: 700; letter-spacing: 0.05em; }}
+        .label {{ font-family: 'JetBrains Mono', monospace; fill: {theme['muted']}; font-size: 12px; }}
+        .value {{ font-family: 'JetBrains Mono', monospace; fill: {theme['white']}; font-size: 12px; font-weight: 600; }}
         .bg {{ fill: {theme['surface']}; stroke: {theme['border']}; stroke-width: 2; }}
         .shadow {{ fill: {theme['shadow']}; }}
     </style>
@@ -238,13 +238,13 @@ def generate_donut(data, title):
     <!-- Foreground Background -->
     <rect width="{w}" height="{h}" class="bg" />
     
-    <text x="25" y="30" class="title">{title.upper()}</text>
-    <line x1="25" y1="36" x2="140" y2="36" stroke="{theme['accent']}" stroke-width="2" />
+    <text x="30" y="35" class="title">{title.upper()}</text>
+    <line x1="30" y1="42" x2="160" y2="42" stroke="{theme['accent']}" stroke-width="2" />
     '''
     
-    cx, cy, radius, stroke_width = 210, 85, 40, 12
+    cx, cy, radius, stroke_width = 330, 100, 48, 14
     current_angle = 0
-    y_offset = 58
+    y_offset = 70
     for name_l, val in data:
         pct = (val / total) * 100 if total > 0 else 0
         angle = (val / total) * 360 if total > 0 else 0
@@ -274,36 +274,48 @@ def generate_donut(data, title):
 
 
 # 1. Stats SVG
-svg_stats = f'''<svg width="308" height="158" viewBox="0 0 308 158" xmlns="http://www.w3.org/2000/svg">
+w, h = 446, 170
+shadow_offset = 8
+canvas_w = w + shadow_offset
+canvas_h = h + shadow_offset
+svg_stats = f'''<svg width="{canvas_w}" height="{canvas_h}" viewBox="0 0 {canvas_w} {canvas_h}" xmlns="http://www.w3.org/2000/svg">
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
-      .title {{ font-family: 'Space Grotesk', sans-serif; fill: {theme['white']}; font-size: 15px; font-weight: 700; letter-spacing: 0.05em; }}
-      .label {{ font-family: 'JetBrains Mono', sans-serif; fill: {theme['muted']}; font-size: 11px; }}
-      .value {{ font-family: 'JetBrains Mono', sans-serif; fill: {theme['white']}; font-size: 11px; font-weight: 600; }}
+      .title {{ font-family: 'Space Grotesk', system-ui; fill: {theme['white']}; font-size: 16px; font-weight: 700; letter-spacing: 0.05em; }}
+      .label {{ font-family: 'JetBrains Mono', monospace; fill: {theme['muted']}; font-size: 12px; }}
+      .value {{ font-family: 'JetBrains Mono', monospace; fill: {theme['white']}; font-size: 12px; font-weight: 600; }}
       .bg {{ fill: {theme['surface']}; stroke: {theme['border']}; stroke-width: 2; }}
       .shadow {{ fill: {theme['shadow']}; }}
       .icon {{ fill: {theme['accent']}; }}
   </style>
-  <rect x="8" y="8" width="300" height="150" class="shadow" />
-  <rect width="300" height="150" class="bg" />
+  <rect x="{shadow_offset}" y="{shadow_offset}" width="{w}" height="{h}" class="shadow" />
+  <rect width="{w}" height="{h}" class="bg" />
   
-  <text x="25" y="30" class="title">STATS</text>
-  <line x1="25" y1="36" x2="80" y2="36" stroke="{theme['accent']}" stroke-width="2" />
+  <text x="30" y="35" class="title">LIFETIME STATS</text>
+  <line x1="30" y1="42" x2="160" y2="42" stroke="{theme['accent']}" stroke-width="2" />
   
-  <g transform="translate(25, 48)"><g class="icon" transform="scale(0.8)">{icons['star']}</g></g>
-  <text x="45" y="60" class="label">Stars: </text><text x="160" y="60" class="value">{stars}</text>
-
-  <g transform="translate(25, 68)"><g class="icon" transform="scale(0.8)">{icons['commit']}</g></g>
-  <text x="45" y="80" class="label">Lifetime Commits: </text><text x="160" y="80" class="value">{current_commits}</text>
-
-  <g transform="translate(25, 88)"><g class="icon" transform="scale(0.8)">{icons['pr']}</g></g>
-  <text x="45" y="100" class="label">PRs: </text><text x="160" y="100" class="value">{prs}</text>
-
-  <g transform="translate(25, 108)"><g class="icon" transform="scale(0.8)">{icons['issue']}</g></g>
-  <text x="45" y="120" class="label">Issues: </text><text x="160" y="120" class="value">{issues}</text>
-
-  <g transform="translate(25, 128)"><g class="icon" transform="scale(0.8)">{icons['repo']}</g></g>
-  <text x="45" y="140" class="label">Contributed: </text><text x="160" y="140" class="value">{contrib_to}</text>
+  <g transform="translate(30, 65)">
+    <g transform="translate(0, 0)">
+        <g class="icon" transform="scale(0.9)">{icons['star']}</g>
+        <text x="30" y="16" class="label">Stars: <tspan class="value" x="180">{stars}</tspan></text>
+    </g>
+    <g transform="translate(0, 28)">
+        <g class="icon" transform="scale(0.9)">{icons['commit']}</g>
+        <text x="30" y="16" class="label">Commits: <tspan class="value" x="180">{current_commits}</tspan></text>
+    </g>
+    <g transform="translate(0, 56)">
+        <g class="icon" transform="scale(0.9)">{icons['pr']}</g>
+        <text x="30" y="16" class="label">Pull Requests: <tspan class="value" x="180">{prs}</tspan></text>
+    </g>
+    <g transform="translate(230, 0)">
+        <g class="icon" transform="scale(0.9)">{icons['issue']}</g>
+        <text x="30" y="16" class="label">Issues: <tspan class="value" x="130">{issues}</tspan></text>
+    </g>
+    <g transform="translate(230, 28)">
+        <g class="icon" transform="scale(0.9)">{icons['repo']}</g>
+        <text x="30" y="16" class="label">Contributed: <tspan class="value" x="130">{contrib_to}</tspan></text>
+    </g>
+  </g>
 </svg>'''
 
 with open("1-stats.svg", "w", encoding="utf-8") as f:
@@ -328,16 +340,16 @@ except Exception as e:
 # Function to generate individual repository badges
 def generate_repo_badge(name, theme, icon_path):
     # Single-side red badge with left-aligned text and repo icon
-    return f'''<svg width="280" height="32" viewBox="0 0 280 32" xmlns="http://www.w3.org/2000/svg">
+    return f'''<svg width="446" height="40" viewBox="0 0 446 40" xmlns="http://www.w3.org/2000/svg">
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
-      .name {{ font-family: 'Space Grotesk', sans-serif; fill: {theme['white']}; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }}
+      .name {{ font-family: 'Space Grotesk', sans-serif; fill: {theme['white']}; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }}
   </style>
-  <rect width="280" height="32" rx="4" fill="{theme['accent']}" />
-  <g transform="translate(15, 8) scale(0.7)" fill="{theme['white']}">
+  <rect width="446" height="40" rx="4" fill="{theme['accent']}" />
+  <g transform="translate(20, 10) scale(0.85)" fill="{theme['white']}">
     {icon_path}
   </g>
-  <text x="42" y="21" class="name">{name}</text>
+  <text x="55" y="26" class="name">{name}</text>
 </svg>'''
 
 # --- Dynamic README Update (2x2 Grid with Clickable Badges) ---
@@ -358,28 +370,25 @@ for i, repo in enumerate(favorites[:3], 1):
     with open(filename, "w", encoding="utf-8") as f:
         f.write(badge_content)
     
-    badges_html += f'<a href="{repo["url"]}"><img src="{filename}" width="280" height="32" /></a>'
+    badges_html += f'<a href="{repo["url"]}"><img src="{filename}" width="446" /></a>'
     if i < 3: badges_html += "\n          <br/>\n          " 
 
 new_stats_html = f"""<!--STATS_START-->
 <div align="center">
   <br/>
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: none;">
-    <tr>
-      <td align="center" style="border: none;"><img src="1-stats.svg" alt="Stats" width="308" /></td>
-      <td align="center" style="border: none;"><img src="2-top-languages.svg" alt="Top Languages by Repo" width="308" /></td>
-    </tr>
-    <tr>
-      <td align="center" style="border: none;"><img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="308" /></td>
-      <td align="center" style="border: none;" valign="middle">
-        <div align="center">
-          {badges_html}
-        </div>
-      </td>
-    </tr>
-  </table>
+  <div style="display: block; width: 908px; margin: 0 auto; text-align: center;">
+    <img src="1-stats.svg" alt="Stats" width="454" />
+    <img src="2-top-languages.svg" alt="Top Languages by Repo" width="454" />
+    <br/>
+    <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="454" />
+    <div style="display: inline-block; vertical-align: top; width: 454px; text-align: center;">
+      <div align="center">
+        {badges_html}
+      </div>
+    </div>
+  </div>
   <br/>
-  <img src="0-profile-details.svg" alt="Profile Details" width="620" />
+  <img src="0-profile-details.svg" alt="Profile Details" width="908" />
 </div>
 <!--STATS_END-->"""
 

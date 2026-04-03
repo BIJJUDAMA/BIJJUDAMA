@@ -6,12 +6,12 @@
 
 <br/>
 
-<a href="https://nitansh.netlify.app/">
+<a href="https://nitansh.is-a.dev/    ">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=24&pause=1000&color=3B82F6&center=true&vCenter=true&width=550&lines=Building+scalable+web+apps;Exploring+AI/ML+%26+RAG;Engineering+robust+backends;Turning+coffee+into+code" alt="Typing SVG" />
 </a>
 
 <p align="center">
-  <a href="https://nitansh.netlify.app/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#00CBCE" alt="Portfolio" /></a>
+  <a href="https://nitansh.is-a.dev/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#00CBCE" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/shankarnitansh/"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
  
 </p>
@@ -46,26 +46,23 @@
   <!--STATS_START-->
 <div align="center">
   <br/>
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: none;">
-    <tr>
-      <td align="center" style="border: none;"><img src="1-stats.svg" alt="Stats" width="308" /></td>
-      <td align="center" style="border: none;"><img src="2-top-languages.svg" alt="Top Languages by Repo" width="308" /></td>
-    </tr>
-    <tr>
-      <td align="center" style="border: none;"><img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="308" /></td>
-      <td align="center" style="border: none;" valign="middle">
-        <div align="center">
-          <a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="280" height="32" /></a>
+  <div style="display: block; width: 908px; margin: 0 auto; text-align: center;">
+    <img src="1-stats.svg" alt="Stats" width="454" />
+    <img src="2-top-languages.svg" alt="Top Languages by Repo" width="454" />
+    <br/>
+    <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="454" />
+    <div style="display: inline-block; vertical-align: top; width: 454px; text-align: center;">
+      <div align="center">
+        <a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="446" /></a>
           <br/>
-          <a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="280" height="32" /></a>
+          <a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="446" /></a>
           <br/>
-          <a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="280" height="32" /></a>
-        </div>
-      </td>
-    </tr>
-  </table>
+          <a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="446" /></a>
+      </div>
+    </div>
+  </div>
   <br/>
-  <img src="0-profile-details.svg" alt="Profile Details" width="620" />
+  <img src="0-profile-details.svg" alt="Profile Details" width="908" />
 </div>
 <!--STATS_END-->
 
@@ -94,7 +91,7 @@
   
   <br/>
   
-  <a href="https://nitansh.netlify.app/">
+  <a href="https://nitansh.is-a.dev/">
     <img src="https://img.shields.io/badge/Visit_My_Portfolio_%E2%86%92-000000?style=for-the-badge&logo=firefox&logoColor=00CBCE" alt="Portfolio" />
   </a>
 </div>

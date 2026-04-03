@@ -1,32 +1,32 @@
-<svg width="308" height="158" viewBox="0 0 308 158" xmlns="http://www.w3.org/2000/svg">
+<svg width="454" height="178" viewBox="0 0 454 178" xmlns="http://www.w3.org/2000/svg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
-        .title { font-family: 'Space Grotesk', system-ui; fill: #fafafa; font-size: 15px; font-weight: 700; letter-spacing: 0.05em; }
-        .label { font-family: 'JetBrains Mono', monospace; fill: #666666; font-size: 11px; }
-        .value { font-family: 'JetBrains Mono', monospace; fill: #fafafa; font-size: 11px; font-weight: 600; }
+        .title { font-family: 'Space Grotesk', system-ui; fill: #fafafa; font-size: 16px; font-weight: 700; letter-spacing: 0.05em; }
+        .label { font-family: 'JetBrains Mono', monospace; fill: #666666; font-size: 12px; }
+        .value { font-family: 'JetBrains Mono', monospace; fill: #fafafa; font-size: 12px; font-weight: 600; }
         .bg { fill: #141414; stroke: #333333; stroke-width: 2; }
         .shadow { fill: #000000; }
     </style>
     <!-- Brutalist Shadow -->
-    <rect x="8" y="8" width="300" height="150" class="shadow" />
+    <rect x="8" y="8" width="446" height="170" class="shadow" />
     <!-- Foreground Background -->
-    <rect width="300" height="150" class="bg" />
+    <rect width="446" height="170" class="bg" />
     
-    <text x="25" y="30" class="title">TOP LANGUAGES BY REPO</text>
-    <line x1="25" y1="36" x2="140" y2="36" stroke="#ff0000" stroke-width="2" />
-    <path d="M 210.0 45.0 A 40 40 0 0 1 238.5855327987125 112.9797661643862" fill="none" stroke="#3178c6" stroke-width="12" />
-        <rect x="25" y="50" width="8" height="8" fill="#3178c6" />
-        <text x="40" y="58" class="label">TypeScript <tspan fill="#fafafa" class="value">37.3%</tspan></text>
-        <path d="M 238.5855327987125 112.9797661643862 A 40 40 0 0 1 189.94614263496214 119.60986571460106" fill="none" stroke="#f1e05a" stroke-width="12" />
-        <rect x="25" y="66" width="8" height="8" fill="#f1e05a" />
-        <text x="40" y="74" class="label">JavaScript <tspan fill="#fafafa" class="value">21.0%</tspan></text>
-        <path d="M 189.94614263496214 119.60986571460106 A 40 40 0 0 1 170.06515883525105 82.71779467482118" fill="none" stroke="#3572A5" stroke-width="12" />
-        <rect x="25" y="82" width="8" height="8" fill="#3572A5" />
-        <text x="40" y="90" class="label">Python <tspan fill="#fafafa" class="value">17.6%</tspan></text>
-        <path d="M 170.06515883525105 82.71779467482118 A 40 40 0 0 1 186.19363892051052 52.855682117161535" fill="none" stroke="#dea584" stroke-width="12" />
-        <rect x="25" y="98" width="8" height="8" fill="#dea584" />
-        <text x="40" y="106" class="label">Rust <tspan fill="#fafafa" class="value">13.9%</tspan></text>
-        <path d="M 186.19363892051052 52.855682117161535 A 40 40 0 0 1 210.0 45.0" fill="none" stroke="#663399" stroke-width="12" />
-        <rect x="25" y="114" width="8" height="8" fill="#663399" />
-        <text x="40" y="122" class="label">CSS <tspan fill="#fafafa" class="value">10.1%</tspan></text>
+    <text x="30" y="35" class="title">TOP LANGUAGES BY REPO</text>
+    <line x1="30" y1="42" x2="160" y2="42" stroke="#ff0000" stroke-width="2" />
+    <path d="M 330.0 52.0 A 48 48 0 0 1 364.30263935845505 133.57571939726344" fill="none" stroke="#3178c6" stroke-width="14" />
+        <rect x="25" y="62" width="8" height="8" fill="#3178c6" />
+        <text x="40" y="70" class="label">TypeScript <tspan fill="#fafafa" class="value">37.3%</tspan></text>
+        <path d="M 364.30263935845505 133.57571939726344 A 48 48 0 0 1 305.9353711619546 141.53183885752128" fill="none" stroke="#f1e05a" stroke-width="14" />
+        <rect x="25" y="78" width="8" height="8" fill="#f1e05a" />
+        <text x="40" y="86" class="label">JavaScript <tspan fill="#fafafa" class="value">21.0%</tspan></text>
+        <path d="M 305.9353711619546 141.53183885752128 A 48 48 0 0 1 282.0781906023013 97.26135360978542" fill="none" stroke="#3572A5" stroke-width="14" />
+        <rect x="25" y="94" width="8" height="8" fill="#3572A5" />
+        <text x="40" y="102" class="label">Python <tspan fill="#fafafa" class="value">17.6%</tspan></text>
+        <path d="M 282.0781906023013 97.26135360978542 A 48 48 0 0 1 301.4323667046126 61.42681854059384" fill="none" stroke="#dea584" stroke-width="14" />
+        <rect x="25" y="110" width="8" height="8" fill="#dea584" />
+        <text x="40" y="118" class="label">Rust <tspan fill="#fafafa" class="value">13.9%</tspan></text>
+        <path d="M 301.4323667046126 61.42681854059384 A 48 48 0 0 1 330.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
+        <rect x="25" y="126" width="8" height="8" fill="#663399" />
+        <text x="40" y="134" class="label">CSS <tspan fill="#fafafa" class="value">10.1%</tspan></text>
         </svg>
