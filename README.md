@@ -46,20 +46,14 @@
   <!--STATS_START-->
 <div align="center">
   <br/>
-  <div style="display: block; width: 908px; margin: 0 auto; text-align: center;">
-    <img src="1-stats.svg" alt="Stats" width="454" />
-    <img src="2-top-languages.svg" alt="Top Languages by Repo" width="454" />
+  <div style="width: 908px; text-align: center;">
+    <img src="1-stats.svg" alt="Stats" width="450" style="vertical-align: middle;" /><img src="2-top-languages.svg" alt="Top Languages by Repo" width="450" style="vertical-align: middle;" />
     <br/>
-    <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="454" />
-    <div style="display: inline-block; vertical-align: top; width: 454px; text-align: center;">
-      <div align="center">
-        <a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="446" /></a>
+    <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="450" style="vertical-align: middle;" /><div style="display: inline-block; vertical-align: middle; width: 450px; text-align: center;"><a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="446" /></a>
           <br/>
           <a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="446" /></a>
           <br/>
-          <a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="446" /></a>
-      </div>
-    </div>
+          <a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="446" /></a></div>
   </div>
   <br/>
   <img src="0-profile-details.svg" alt="Profile Details" width="908" />
@@ -68,7 +62,7 @@
 
 <br/>
 
-### Contribution Graph
+<h3 align="left">Contribution Graph</h3>
 
 <p align="center">
   <picture>
@@ -85,7 +79,7 @@
   
 
   
-  <h2><i>"Code is poetry."</i></h2>
+  <h2><i>"Code is Poetry."</i></h2>
   
 
   
