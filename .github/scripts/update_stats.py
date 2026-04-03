@@ -554,7 +554,7 @@ advanced_svg = f"""<svg width="608" height="238" viewBox="0 0 608 238" xmlns="ht
   
   <g class="hide delay-4">
     <text y="125" x="20" class="output">&gt; <tspan class="bold">Website Development Head</tspan> @ Init Club,</text>
-    <text y="145" x="20" class="output">&gt; Previously worked with <tspan class="bold">InCTF</tspan> &amp; <tspan class="bold">Station-S</tspan></text>
+    <text y="145" x="20" class="output">&gt; Ex SDE-Intern @ <tspan class="bold">Station-S</tspan></text>
   </g>
 
   <!-- Block 3 -->
