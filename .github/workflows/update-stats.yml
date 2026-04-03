@@ -23,7 +23,7 @@ jobs:
           
       - name: Update README with GitHub native stats
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: python .github/scripts/update_stats.py
         
       - name: Commit & Push changes

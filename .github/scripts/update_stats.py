@@ -77,6 +77,7 @@ for year in range(created_at, current_year + 1):
       user(login: "{USERNAME}") {{
         contributionsCollection(from: "{start_date}", to: "{end_date}") {{
           totalCommitContributions
+          restrictedContributionsCount
           contributionCalendar {{
             totalContributions
             weeks {{
@@ -91,7 +92,12 @@ for year in range(created_at, current_year + 1):
     """
     try:
         coll = run_query(yearly_query)['user']['contributionsCollection']
+        
+        # Add public commits
         lifetime_commits += coll['totalCommitContributions']
+        # Add private/restricted commits (if token allows)
+        lifetime_commits += coll.get('restrictedContributionsCount', 0)
+        
         lifetime_contributions += coll['contributionCalendar']['totalContributions']
         lifetime_weeks.extend(coll['contributionCalendar']['weeks'])
     except Exception as e:
@@ -121,6 +127,7 @@ while has_next_page:
           totalCount
           nodes {{
             name
+            isPrivate
             stargazerCount
             defaultBranchRef {{
               target {{
@@ -152,13 +159,18 @@ while has_next_page:
         print(f"Error fetching repositories: {e}")
         has_next_page = False
 
-stars = sum(node['stargazerCount'] for node in all_repo_nodes)
-
+# Process Repo Data (Aggregating Totals)
+public_repos_count = 0
+stars = 0
 langs_by_repo = defaultdict(int)
 langs_by_commit = defaultdict(int)
 lang_colors = {}
 
 for repo in all_repo_nodes:
+    if not repo['isPrivate']:
+        public_repos_count += 1
+    
+    stars += repo['stargazerCount']
     repo_commits = 0
     try:
         if repo['defaultBranchRef'] and repo['defaultBranchRef']['target']:
@@ -344,7 +356,7 @@ svg_profile = f'''<svg width="908" height="258" viewBox="0 0 908 258" xmlns="htt
   <text x="55" y="108" class="label">Lifetime Contributions: <tspan class="value">{current_contributions}</tspan></text>
 
   <g transform="translate(30, 130)"><g class="icon" transform="scale(0.9)">{icons['repo']}</g></g>
-  <text x="55" y="143" class="label">Public Repos: <tspan class="value">{repos_count}</tspan></text>
+  <text x="55" y="143" class="label">Public Repos: <tspan class="value">{public_repos_count}</tspan></text>
 
   <g transform="translate(30, 165)"><g class="icon" transform="scale(0.9)">{icons['clock']}</g></g>
   <text x="55" y="178" class="label">Joined GitHub: <tspan class="value">{joined_years} years ago</tspan></text>
@@ -487,7 +499,7 @@ stats_data = {
         "prs": prs,
         "issues": issues,
         "contributed_to": contrib_to,
-        "public_repos": repos_count
+        "public_repos": public_repos_count
     },
     "languages": {
         "by_repo_size": {lang: round((size / total_repo_size) * 100, 1) if total_repo_size > 0 else 0 for lang, size in top_langs_repo},
