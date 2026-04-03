@@ -198,7 +198,7 @@ theme = {
     'surface': '#141414',
     'accent': '#ff0000',
     'border': '#333333',
-    'muted': '#666666',
+    'muted': '#aaaaaa',
     'white': '#fafafa'
 }
 
@@ -219,7 +219,7 @@ icons = {
 
 def generate_donut(data, title):
     total = sum(d[1] for d in data)
-    w, h = 446, 170
+    w, h = 412, 170
     shadow_offset = 8
     canvas_w = w + shadow_offset
     canvas_h = h + shadow_offset
@@ -238,11 +238,11 @@ def generate_donut(data, title):
     <!-- Foreground Background -->
     <rect width="{w}" height="{h}" class="bg" />
     
-    <text x="30" y="35" class="title">{title.upper()}</text>
+    <text x="30" y="35" class="title" fill="{theme['white']}">{title.upper()}</text>
     <line x1="30" y1="42" x2="160" y2="42" stroke="{theme['accent']}" stroke-width="2" />
     '''
     
-    cx, cy, radius, stroke_width = 330, 100, 48, 14
+    cx, cy, radius, stroke_width = 300, 100, 48, 14
     current_angle = 0
     y_offset = 70
     for name_l, val in data:
@@ -274,7 +274,7 @@ def generate_donut(data, title):
 
 
 # 1. Stats SVG
-w, h = 446, 170
+w, h = 412, 170
 shadow_offset = 8
 canvas_w = w + shadow_offset
 canvas_h = h + shadow_offset
@@ -291,29 +291,29 @@ svg_stats = f'''<svg width="{canvas_w}" height="{canvas_h}" viewBox="0 0 {canvas
   <rect x="{shadow_offset}" y="{shadow_offset}" width="{w}" height="{h}" class="shadow" />
   <rect width="{w}" height="{h}" class="bg" />
   
-  <text x="30" y="35" class="title">LIFETIME STATS</text>
+  <text x="30" y="35" class="title" fill="{theme['white']}">LIFETIME STATS</text>
   <line x1="30" y1="42" x2="160" y2="42" stroke="{theme['accent']}" stroke-width="2" />
   
   <g transform="translate(30, 65)">
     <g transform="translate(0, 0)">
         <g class="icon" transform="scale(0.9)">{icons['star']}</g>
-        <text x="30" y="16" class="label">Stars: <tspan class="value" x="180">{stars}</tspan></text>
+        <text x="30" y="16" class="label" fill="{theme['muted']}">Stars: <tspan class="value" x="160" fill="{theme['white']}">{stars}</tspan></text>
     </g>
     <g transform="translate(0, 28)">
         <g class="icon" transform="scale(0.9)">{icons['commit']}</g>
-        <text x="30" y="16" class="label">Commits: <tspan class="value" x="180">{current_commits}</tspan></text>
+        <text x="30" y="16" class="label" fill="{theme['muted']}">Commits: <tspan class="value" x="160" fill="{theme['white']}">{current_commits}</tspan></text>
     </g>
     <g transform="translate(0, 56)">
         <g class="icon" transform="scale(0.9)">{icons['pr']}</g>
-        <text x="30" y="16" class="label">Pull Requests: <tspan class="value" x="180">{prs}</tspan></text>
+        <text x="30" y="16" class="label" fill="{theme['muted']}">Pull Requests: <tspan class="value" x="160" fill="{theme['white']}">{prs}</tspan></text>
     </g>
-    <g transform="translate(230, 0)">
+    <g transform="translate(210, 0)">
         <g class="icon" transform="scale(0.9)">{icons['issue']}</g>
-        <text x="30" y="16" class="label">Issues: <tspan class="value" x="130">{issues}</tspan></text>
+        <text x="30" y="16" class="label" fill="{theme['muted']}">Issues: <tspan class="value" x="120" fill="{theme['white']}">{issues}</tspan></text>
     </g>
-    <g transform="translate(230, 28)">
+    <g transform="translate(210, 28)">
         <g class="icon" transform="scale(0.9)">{icons['repo']}</g>
-        <text x="30" y="16" class="label">Contributed: <tspan class="value" x="130">{contrib_to}</tspan></text>
+        <text x="30" y="16" class="label" fill="{theme['muted']}">Contributed: <tspan class="value" x="120" fill="{theme['white']}">{contrib_to}</tspan></text>
     </g>
   </g>
 </svg>'''
@@ -340,16 +340,16 @@ except Exception as e:
 # Function to generate individual repository badges
 def generate_repo_badge(name, theme, icon_path):
     # Single-side red badge with left-aligned text and repo icon
-    return f'''<svg width="446" height="40" viewBox="0 0 446 40" xmlns="http://www.w3.org/2000/svg">
+    return f'''<svg width="412" height="40" viewBox="0 0 412 40" xmlns="http://www.w3.org/2000/svg">
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
       .name {{ font-family: 'Space Grotesk', sans-serif; fill: {theme['white']}; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }}
   </style>
-  <rect width="446" height="40" rx="4" fill="{theme['accent']}" />
+  <rect width="412" height="40" rx="4" fill="{theme['accent']}" />
   <g transform="translate(20, 10) scale(0.85)" fill="{theme['white']}">
     {icon_path}
   </g>
-  <text x="55" y="26" class="name">{name}</text>
+  <text x="55" y="26" class="name" fill="{theme['white']}">{name}</text>
 </svg>'''
 
 # --- Dynamic README Update (2x2 Grid with Clickable Badges) ---
@@ -370,28 +370,19 @@ for i, repo in enumerate(favorites[:3], 1):
     with open(filename, "w", encoding="utf-8") as f:
         f.write(badge_content)
     
-    badges_html += f'<a href="{repo["url"]}"><img src="{filename}" width="446" /></a>'
+    badges_html += f'<a href="{repo["url"]}"><img src="{filename}" width="412" /></a>'
     if i < 3: badges_html += "\n          <br/>\n          " 
 
 new_stats_html = f"""<!--STATS_START-->
 <div align="center">
   <br/>
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: none; width: 908px;">
-    <tr>
-      <td align="center" style="border: none; padding: 0;"><img src="1-stats.svg" alt="Stats" width="454" /></td>
-      <td align="center" style="border: none; padding: 0;"><img src="2-top-languages.svg" alt="Top Languages by Repo" width="454" /></td>
-    </tr>
-    <tr>
-      <td align="center" style="border: none; padding: 0;"><img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="454" /></td>
-      <td align="center" style="border: none; padding: 0;" valign="middle">
-        <div align="center">
-          {badges_html}
-        </div>
-      </td>
-    </tr>
-  </table>
+  <div style="width: 840px; text-align: center;">
+    <img src="1-stats.svg" alt="Stats" width="420" style="vertical-align: middle;" /><img src="2-top-languages.svg" alt="Top Languages by Repo" width="420" style="vertical-align: middle;" />
+    <br/>
+    <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="420" style="vertical-align: middle;" /><div style="display: inline-block; vertical-align: middle; width: 420px; text-align: center;">{badges_html}</div>
+  </div>
   <br/>
-  <img src="0-profile-details.svg" alt="Profile Details" width="908" />
+  <img src="0-profile-details.svg" alt="Profile Details" width="840" />
 </div>
 <!--STATS_END-->"""
 

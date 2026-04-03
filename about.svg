@@ -4,7 +4,7 @@
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;display=swap');
       .prompt { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #ff0000; font-weight: 600; }
       .cmd { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #fafafa; }
-      .file { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #666666; }
+      .file { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #aaaaaa; }
       .output { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #fafafa; opacity: 0.85; }
       .bold { font-weight: 600; fill: #fafafa; font-size: 14px; }
       .bg { fill: #141414; }
