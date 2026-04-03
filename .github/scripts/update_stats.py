@@ -62,57 +62,103 @@ if joined_years == 0: joined_years = 1
 issues = basic_data['issues']['totalCount']
 prs = basic_data['pullRequests']['totalCount']
 contrib_to = basic_data['repositoriesContributedTo']['totalCount']
-current_commits = basic_data['contributionsCollection']['contributionCalendar']['totalContributions']
 
-# Area chart data
-weeks = basic_data['contributionsCollection']['contributionCalendar']['weeks']
-# flatten days
-days = []
-for w in weeks:
-    for d in w['contributionDays']:
-        days.append(d['contributionCount'])
+# Fetch Lifetime Contributions & Commits (Iterate Years)
+lifetime_commits = 0
+lifetime_contributions = 0
+lifetime_weeks = []
 
-weekly_contrib = [sum(d['contributionCount'] for d in w['contributionDays']) for w in weeks]
-max_contrib = max(weekly_contrib) if weekly_contrib else 1
-
-# Query 2: Repos for Languages and Stars
-repo_query = f"""
-query {{
-  user(login: "{USERNAME}") {{
-    repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {{
-      totalCount
-      nodes {{
-        name
-        stargazerCount
-        defaultBranchRef {{
-          target {{
-            ... on Commit {{
-              history(author: {{id: "{user_id}"}}) {{
-                totalCount
+for year in range(created_at, current_year + 1):
+    start_date = f"{year}-01-01T00:00:00Z"
+    end_date = f"{year}-12-31T23:59:59Z"
+    
+    yearly_query = f"""
+    query {{
+      user(login: "{USERNAME}") {{
+        contributionsCollection(from: "{start_date}", to: "{end_date}") {{
+          totalCommitContributions
+          contributionCalendar {{
+            totalContributions
+            weeks {{
+              contributionDays {{
+                contributionCount
               }}
             }}
           }}
         }}
-        languages(first: 10, orderBy: {{field: SIZE, direction: DESC}}) {{
-          edges {{
-            size
-            node {{ name color }}
+      }}
+    }}
+    """
+    try:
+        coll = run_query(yearly_query)['user']['contributionsCollection']
+        lifetime_commits += coll['totalCommitContributions']
+        lifetime_contributions += coll['contributionCalendar']['totalContributions']
+        lifetime_weeks.extend(coll['contributionCalendar']['weeks'])
+    except Exception as e:
+        print(f"Error fetching data for year {year}: {e}")
+
+current_commits = lifetime_commits
+current_contributions = lifetime_contributions
+weekly_contrib = [sum(d['contributionCount'] for d in w['contributionDays']) for w in lifetime_weeks]
+max_contrib = max(weekly_contrib) if weekly_contrib else 1
+
+# Query 2: Repos for Languages and Stars (With Pagination)
+all_repo_nodes = []
+has_next_page = True
+cursor = None
+repos_count = 0
+
+while has_next_page:
+    cursor_str = f', after: "{cursor}"' if cursor else ""
+    repo_query = f"""
+    query {{
+      user(login: "{USERNAME}") {{
+        repositories(first: 100, ownerAffiliations: OWNER, isFork: false{cursor_str}) {{
+          pageInfo {{
+            hasNextPage
+            endCursor
+          }}
+          totalCount
+          nodes {{
+            name
+            stargazerCount
+            defaultBranchRef {{
+              target {{
+                ... on Commit {{
+                  history(author: {{id: "{user_id}"}}) {{
+                    totalCount
+                  }}
+                }}
+              }}
+            }}
+            languages(first: 10, orderBy: {{field: SIZE, direction: DESC}}) {{
+              edges {{
+                size
+                node {{ name color }}
+              }}
+            }}
           }}
         }}
       }}
     }}
-  }}
-}}
-"""
-repo_data = run_query(repo_query)['user']['repositories']
-repos_count = repo_data['totalCount']
-stars = sum(node['stargazerCount'] for node in repo_data['nodes'])
+    """
+    try:
+        repo_data_paged = run_query(repo_query)['user']['repositories']
+        all_repo_nodes.extend(repo_data_paged['nodes'])
+        repos_count = repo_data_paged['totalCount']
+        has_next_page = repo_data_paged['pageInfo']['hasNextPage']
+        cursor = repo_data_paged['pageInfo']['endCursor']
+    except Exception as e:
+        print(f"Error fetching repositories: {e}")
+        has_next_page = False
+
+stars = sum(node['stargazerCount'] for node in all_repo_nodes)
 
 langs_by_repo = defaultdict(int)
 langs_by_commit = defaultdict(int)
 lang_colors = {}
 
-for repo in repo_data['nodes']:
+for repo in all_repo_nodes:
     repo_commits = 0
     try:
         if repo['defaultBranchRef'] and repo['defaultBranchRef']['target']:
@@ -235,7 +281,7 @@ svg_stats = f'''<svg width="308" height="158" viewBox="0 0 308 158" xmlns="http:
   <text x="45" y="60" class="label">Stars: </text><text x="160" y="60" class="value">{stars}</text>
 
   <g transform="translate(25, 68)"><g class="icon" transform="scale(0.8)">{icons['commit']}</g></g>
-  <text x="45" y="80" class="label">Commits: </text><text x="160" y="80" class="value">{current_commits}</text>
+  <text x="45" y="80" class="label">Lifetime Commits: </text><text x="160" y="80" class="value">{current_commits}</text>
 
   <g transform="translate(25, 88)"><g class="icon" transform="scale(0.8)">{icons['pr']}</g></g>
   <text x="45" y="100" class="label">PRs: </text><text x="160" y="100" class="value">{prs}</text>
@@ -295,7 +341,7 @@ svg_profile = f'''<svg width="908" height="258" viewBox="0 0 908 258" xmlns="htt
   <line x1="30" y1="60" x2="300" y2="60" stroke="{theme['accent']}" stroke-width="2" />
   
   <g transform="translate(30, 95)"><g class="icon" transform="scale(0.9)">{icons['activity']}</g></g>
-  <text x="55" y="108" class="label">Contributions: <tspan class="value">{current_commits}</tspan></text>
+  <text x="55" y="108" class="label">Lifetime Contributions: <tspan class="value">{current_contributions}</tspan></text>
 
   <g transform="translate(30, 130)"><g class="icon" transform="scale(0.9)">{icons['repo']}</g></g>
   <text x="55" y="143" class="label">Public Repos: <tspan class="value">{repos_count}</tspan></text>
@@ -306,7 +352,7 @@ svg_profile = f'''<svg width="908" height="258" viewBox="0 0 908 258" xmlns="htt
   <g transform="translate(30, 200)"><g class="icon" transform="scale(0.9)">{icons['institution']}</g></g>
   <text x="55" y="213" class="label">Studying At: <tspan class="value">{company}</tspan></text>
   
-  <text x="605" y="45" class="axis-label" text-anchor="middle" fill="{theme['white']}">CONTRIBUTIONS ACTIVITY</text>
+  <text x="605" y="45" class="axis-label" text-anchor="middle" fill="{theme['white']}">LIFETIME CONTRIBUTIONS ACTIVITY</text>
   
   <path d="{path_d}" class="chart-fill"/>
   <line x1="{x_start}" y1="{y_start}" x2="{x_start+chart_w}" y2="{y_start}" class="axis" />
@@ -437,6 +483,7 @@ stats_data = {
     "stats": {
         "stars": stars,
         "commits": current_commits,
+        "contributions": current_contributions,
         "prs": prs,
         "issues": issues,
         "contributed_to": contrib_to,
