@@ -371,15 +371,19 @@ for i, repo in enumerate(favorites[:3], 1):
         f.write(badge_content)
     
     badges_html += f'<a href="{repo["url"]}"><img src="{filename}" width="412" /></a>'
-    if i < 3: badges_html += "\n          <br/>\n          " 
+    if i < 3: badges_html += "<br/>" 
 
 new_stats_html = f"""<!--STATS_START-->
 <div align="center">
   <br/>
-  <div style="width: 840px; text-align: center;">
-    <img src="1-stats.svg" alt="Stats" width="420" style="vertical-align: middle;" /><img src="2-top-languages.svg" alt="Top Languages by Repo" width="420" style="vertical-align: middle;" />
-    <br/>
-    <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="420" style="vertical-align: middle;" /><div style="display: inline-block; vertical-align: middle; width: 420px; text-align: center;">{badges_html}</div>
+  <div style="width: 840px;">
+    <img src="1-stats.svg" width="420" align="left" /><img src="2-top-languages.svg" width="420" align="left" />
+    <br clear="left"/>
+    <img src="3-top-languages-by-commit.svg" width="420" align="left" />
+    <div style="display: inline-block; width: 420px; vertical-align: middle;">
+      {badges_html}
+    </div>
+    <br clear="left"/>
   </div>
   <br/>
   <img src="0-profile-details.svg" alt="Profile Details" width="840" />

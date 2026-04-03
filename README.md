@@ -46,14 +46,14 @@
   <!--STATS_START-->
 <div align="center">
   <br/>
-  <div style="width: 840px; text-align: center;">
-    <img src="1-stats.svg" alt="Stats" width="420" style="vertical-align: middle;" /><img src="2-top-languages.svg" alt="Top Languages by Repo" width="420" style="vertical-align: middle;" />
-    <br/>
-    <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="420" style="vertical-align: middle;" /><div style="display: inline-block; vertical-align: middle; width: 420px; text-align: center;"><a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="412" /></a>
-          <br/>
-          <a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="412" /></a>
-          <br/>
-          <a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="412" /></a></div>
+  <div style="width: 840px;">
+    <img src="1-stats.svg" width="420" align="left" /><img src="2-top-languages.svg" width="420" align="left" />
+    <br clear="left"/>
+    <img src="3-top-languages-by-commit.svg" width="420" align="left" />
+    <div style="display: inline-block; width: 420px; vertical-align: middle;">
+      <a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="412" /></a><br/><a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="412" /></a><br/><a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="412" /></a>
+    </div>
+    <br clear="left"/>
   </div>
   <br/>
   <img src="0-profile-details.svg" alt="Profile Details" width="840" />
