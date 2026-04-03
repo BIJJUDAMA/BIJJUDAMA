@@ -212,7 +212,8 @@ icons = {
     'briefcase': '<path fill-rule="evenodd" d="M3.75 3A1.75 1.75 0 015.5 1.25h5A1.75 1.75 0 0112.25 3v1h1A1.75 1.75 0 0115 5.75v7.5A1.75 1.75 0 0113.25 15H2.75A1.75 1.75 0 011 13.25v-7.5A1.75 1.75 0 012.75 4h1V3zm1.75-.25a.25.25 0 00-.25.25v1h5V3a.25.25 0 00-.25-.25h-5zM2.5 5.75v7.5c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25H2.75a.25.25 0 00-.25.25z"></path>',
     'heart': '<path fill-rule="evenodd" d="M11.204 2.27c-1.396-1.03-3.056-.51-3.954.59L7 3.09l-.25-.23c-.898-1.1-2.558-1.62-3.954-.59-1.428 1.05-1.921 2.9-.844 4.5 1.144 1.7 3.313 3.65 4.808 5.16l.24.25.24-.25c1.495-1.51 3.664-3.46 4.808-5.16 1.077-1.6.584-3.45-.844-4.5zM7.172 13.268C5.636 11.704 3.328 9.61 2.056 7.72c-1.253-1.85-.698-4.04 1.15-5.39.99-.73 2.18-.5 2.9.22l.53.5.53-.5c.72-.72 1.91-.95 2.9-.22 1.848 1.35 2.403 3.54 1.15 5.39-1.272 1.89-3.58 3.984-5.116 5.548A1 1 0 017.172 13.268z"></path>',
     'clock': '<path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zm.5 4.75a.75.75 0 00-1.5 0v3.5a.75.75 0 00.471.696l2.5 1a.75.75 0 00.557-1.392L8.5 7.742V4.75z"></path>',
-    'activity': '<path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm11.646-2.854a.5.5 0 00-.707 0L8 8.086 5.854 5.94a.5.5 0 00-.708 0l-2 2a.5.5 0 10.708.708L5.5 6.992l2.146 2.147a.5.5 0 00.708 0l3.5-3.5a.5.5 0 000-.707z"></path>'
+    'activity': '<path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm11.646-2.854a.5.5 0 00-.707 0L8 8.086 5.854 5.94a.5.5 0 00-.708 0l-2 2a.5.5 0 10.708.708L5.5 6.992l2.146 2.147a.5.5 0 00.708 0l3.5-3.5a.5.5 0 000-.707z"></path>',
+    'github': '<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>'
 }
 
 
@@ -312,9 +313,94 @@ with open("1-stats.svg", "w", encoding="utf-8") as f:
 with open("2-top-languages.svg", "w", encoding="utf-8") as f:
     f.write(generate_donut(top_langs_repo, "Top Languages by Repo"))
 
-# 3. Languages Commit
+# 3. Top Languages (By Commit)
 with open("3-top-languages-by-commit.svg", "w", encoding="utf-8") as f:
     f.write(generate_donut(top_langs_commit, "Top Languages by Commit"))
+
+# --- Dynamic README Update (2x2 Grid with Clickable Badges) ---
+try:
+    with open("favorites.json", "r", encoding="utf-8") as f:
+        favorites = json.load(f)
+except Exception as e:
+    print(f"Error loading favorites.json: {e}")
+    favorites = []
+
+# Function to generate individual repository badges
+def generate_repo_badge(name, theme, icon_path):
+    # Single-side red badge with left-aligned text and repo icon
+    return f'''<svg width="280" height="32" viewBox="0 0 280 32" xmlns="http://www.w3.org/2000/svg">
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+      .name {{ font-family: 'Space Grotesk', sans-serif; fill: {theme['white']}; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }}
+  </style>
+  <rect width="280" height="32" rx="4" fill="{theme['accent']}" />
+  <g transform="translate(15, 8) scale(0.7)" fill="{theme['white']}">
+    {icon_path}
+  </g>
+  <text x="42" y="21" class="name">{name}</text>
+</svg>'''
+
+# --- Dynamic README Update (2x2 Grid with Clickable Badges) ---
+try:
+    with open("favorites.json", "r", encoding="utf-8") as f:
+        favorites = json.load(f)
+except Exception as e:
+    print(f"Error loading favorites.json: {e}")
+    favorites = []
+
+# Generate Badges and corresponding HTML
+badges_html = ""
+github_icon = icons['github'].replace('<path ', '<path fill="currentColor" ') # Ensure it inherits fill
+
+for i, repo in enumerate(favorites[:3], 1):
+    badge_content = generate_repo_badge(repo['name'], theme, github_icon)
+    filename = f"fav-{i}.svg"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(badge_content)
+    
+    badges_html += f'<a href="{repo["url"]}"><img src="{filename}" width="280" height="32" /></a>'
+    if i < 3: badges_html += "\n          <br/>\n          " 
+
+new_stats_html = f"""<!--STATS_START-->
+<div align="center">
+  <br/>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: none;">
+    <tr>
+      <td align="center" style="border: none;"><img src="1-stats.svg" alt="Stats" width="308" /></td>
+      <td align="center" style="border: none;"><img src="2-top-languages.svg" alt="Top Languages by Repo" width="308" /></td>
+    </tr>
+    <tr>
+      <td align="center" style="border: none;"><img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="308" /></td>
+      <td align="center" style="border: none;" valign="middle">
+        <div align="center">
+          {badges_html}
+        </div>
+      </td>
+    </tr>
+  </table>
+  <br/>
+  <img src="0-profile-details.svg" alt="Profile Details" width="620" />
+</div>
+<!--STATS_END-->"""
+
+try:
+    with open("README.md", "r", encoding="utf-8") as f:
+        readme_content = f.read()
+
+    import re
+    # Replace content between STATS markers
+    updated_readme = re.sub(
+        r"<!--STATS_START-->.*?<!--STATS_END-->",
+        new_stats_html,
+        readme_content,
+        flags=re.DOTALL
+    )
+
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(updated_readme)
+    print("README.md updated successfully with 2x2 grid.")
+except Exception as e:
+    print(f"Error updating README.md: {e}")
 
 
 # 4. Profile Details SVG

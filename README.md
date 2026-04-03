@@ -40,20 +40,34 @@
 
 
 
-### GitHub Stats
+### GitHub Stats & Favourite Projects
 
 <div align="center">
   <!--STATS_START-->
 <div align="center">
   <br/>
-  <img src="1-stats.svg" alt="Stats" />
-  <img src="2-top-languages.svg" alt="Top Languages by Repo" />
-  <img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" />
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: none;">
+    <tr>
+      <td align="center" style="border: none;"><img src="1-stats.svg" alt="Stats" width="308" /></td>
+      <td align="center" style="border: none;"><img src="2-top-languages.svg" alt="Top Languages by Repo" width="308" /></td>
+    </tr>
+    <tr>
+      <td align="center" style="border: none;"><img src="3-top-languages-by-commit.svg" alt="Top Languages by Commit" width="308" /></td>
+      <td align="center" style="border: none;" valign="middle">
+        <div align="center">
+          <a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="280" height="32" /></a>
+          <br/>
+          <a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="280" height="32" /></a>
+          <br/>
+          <a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="280" height="32" /></a>
+        </div>
+      </td>
+    </tr>
+  </table>
   <br/>
-  <img src="0-profile-details.svg" alt="Profile Details" />
+  <img src="0-profile-details.svg" alt="Profile Details" width="620" />
 </div>
-  <!--STATS_END-->
-</div>
+<!--STATS_END-->
 
 <br/>
 
