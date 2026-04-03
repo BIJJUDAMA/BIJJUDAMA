@@ -1,4 +1,4 @@
-<svg width="420" height="178" viewBox="0 0 420 178" xmlns="http://www.w3.org/2000/svg">
+<svg width="380" height="178" viewBox="0 0 380 178" xmlns="http://www.w3.org/2000/svg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
         .title { font-family: 'Space Grotesk', system-ui; fill: #fafafa; font-size: 16px; font-weight: 700; letter-spacing: 0.05em; }
@@ -8,25 +8,25 @@
         .shadow { fill: #000000; }
     </style>
     <!-- Brutalist Shadow -->
-    <rect x="8" y="8" width="412" height="170" class="shadow" />
+    <rect x="8" y="8" width="372" height="170" class="shadow" />
     <!-- Foreground Background -->
-    <rect width="412" height="170" class="bg" />
+    <rect width="372" height="170" class="bg" />
     
     <text x="30" y="35" class="title" fill="#fafafa">TOP LANGUAGES BY COMMIT</text>
     <line x1="30" y1="42" x2="160" y2="42" stroke="#ff0000" stroke-width="2" />
-    <path d="M 300.0 52.0 A 48 48 0 0 1 341.6628814678787 123.83703647254598" fill="none" stroke="#3178c6" stroke-width="14" />
+    <path d="M 280.0 52.0 A 48 48 0 0 1 321.6628814678787 123.83703647254598" fill="none" stroke="#3178c6" stroke-width="14" />
         <rect x="25" y="62" width="8" height="8" fill="#3178c6" />
         <text x="40" y="70" class="label">TypeScript <tspan fill="#fafafa" class="value">33.3%</tspan></text>
-        <path d="M 341.6628814678787 123.83703647254598 A 48 48 0 0 1 268.1667588094311 135.9255446069098" fill="none" stroke="#f1e05a" stroke-width="14" />
+        <path d="M 321.6628814678787 123.83703647254598 A 48 48 0 0 1 248.16675880943106 135.9255446069098" fill="none" stroke="#f1e05a" stroke-width="14" />
         <rect x="25" y="78" width="8" height="8" fill="#f1e05a" />
         <text x="40" y="86" class="label">JavaScript <tspan fill="#fafafa" class="value">28.3%</tspan></text>
-        <path d="M 268.1667588094311 135.9255446069098 A 48 48 0 0 1 252.68893775518018 91.89670503641983" fill="none" stroke="#dea584" stroke-width="14" />
+        <path d="M 248.16675880943106 135.9255446069098 A 48 48 0 0 1 232.68893775518018 91.89670503641983" fill="none" stroke="#dea584" stroke-width="14" />
         <rect x="25" y="94" width="8" height="8" fill="#dea584" />
         <text x="40" y="102" class="label">Rust <tspan fill="#fafafa" class="value">16.2%</tspan></text>
-        <path d="M 252.68893775518018 91.89670503641983 A 48 48 0 0 1 272.5706602515797 60.60924828128145" fill="none" stroke="#3572A5" stroke-width="14" />
+        <path d="M 232.68893775518018 91.89670503641983 A 48 48 0 0 1 252.57066025157965 60.60924828128145" fill="none" stroke="#3572A5" stroke-width="14" />
         <rect x="25" y="110" width="8" height="8" fill="#3572A5" />
         <text x="40" y="118" class="label">Python <tspan fill="#fafafa" class="value">12.6%</tspan></text>
-        <path d="M 272.5706602515797 60.60924828128145 A 48 48 0 0 1 300.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
+        <path d="M 252.57066025157965 60.60924828128145 A 48 48 0 0 1 280.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
         <rect x="25" y="126" width="8" height="8" fill="#663399" />
         <text x="40" y="134" class="label">CSS <tspan fill="#fafafa" class="value">9.7%</tspan></text>
         </svg>

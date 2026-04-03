@@ -46,17 +46,22 @@
   <!--STATS_START-->
 <div align="center">
   <br/>
-  <div style="width: 840px;">
-    <img src="1-stats.svg" width="420" align="left" /><img src="2-top-languages.svg" width="420" align="left" />
-    <br clear="left"/>
-    <img src="3-top-languages-by-commit.svg" width="420" align="left" />
-    <div style="display: inline-block; width: 420px; vertical-align: middle;">
-      <a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="412" /></a><br/><a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="412" /></a><br/><a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="412" /></a>
-    </div>
-    <br clear="left"/>
-  </div>
+  <table border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse;">
+    <tr>
+      <td align="center" style="border: none; padding: 0;"><img src="1-stats.svg" width="380" /></td>
+      <td align="center" style="border: none; padding: 0;"><img src="2-top-languages.svg" width="380" /></td>
+    </tr>
+    <tr>
+      <td align="center" style="border: none; padding: 0;"><img src="3-top-languages-by-commit.svg" width="380" /></td>
+      <td align="center" style="border: none; padding: 0;" valign="middle">
+        <div align="center">
+          <a href="https://github.com/BIJJUDAMA/Dead-Poets-Society"><img src="fav-1.svg" width="372" /></a><br/><a href="https://github.com/BIJJUDAMA/MacroPad"><img src="fav-2.svg" width="372" /></a><br/><a href="https://github.com/BIJJUDAMA/RAG-app-with-Langchain"><img src="fav-3.svg" width="372" /></a>
+        </div>
+      </td>
+    </tr>
+  </table>
   <br/>
-  <img src="0-profile-details.svg" alt="Profile Details" width="840" />
+  <img src="0-profile-details.svg" alt="Profile Details" width="760" />
 </div>
 <!--STATS_END-->
 
