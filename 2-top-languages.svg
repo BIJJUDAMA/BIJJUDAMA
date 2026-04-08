@@ -14,19 +14,19 @@
     
     <text x="30" y="35" class="title" fill="#fafafa">TOP LANGUAGES BY REPO</text>
     <line x1="30" y1="42" x2="160" y2="42" stroke="#ff0000" stroke-width="2" />
-    <path d="M 280.0 52.0 A 48 48 0 0 1 315.43192502366367 132.38176476224663" fill="none" stroke="#3178c6" stroke-width="14" />
+    <path d="M 280.0 52.0 A 48 48 0 0 1 315.6900111800709 132.097088683655" fill="none" stroke="#3178c6" stroke-width="14" />
         <rect x="25" y="62" width="8" height="8" fill="#3178c6" />
-        <text x="40" y="70" class="label">TypeScript <tspan fill="#fafafa" class="value">36.8%</tspan></text>
-        <path d="M 315.43192502366367 132.38176476224663 A 48 48 0 0 1 257.3504424121938 142.32017888757855" fill="none" stroke="#f1e05a" stroke-width="14" />
+        <text x="40" y="70" class="label">TypeScript <tspan fill="#fafafa" class="value">36.7%</tspan></text>
+        <path d="M 315.6900111800709 132.097088683655 A 48 48 0 0 1 257.88474840774137 142.60182680368416" fill="none" stroke="#f1e05a" stroke-width="14" />
         <rect x="25" y="78" width="8" height="8" fill="#f1e05a" />
         <text x="40" y="86" class="label">JavaScript <tspan fill="#fafafa" class="value">21.0%</tspan></text>
-        <path d="M 257.3504424121938 142.32017888757855 A 48 48 0 0 1 232.15040139666445 96.20317059908305" fill="none" stroke="#3572A5" stroke-width="14" />
+        <path d="M 257.88474840774137 142.60182680368416 A 48 48 0 0 1 232.1706556959052 95.95601391689405" fill="none" stroke="#3572A5" stroke-width="14" />
         <rect x="25" y="94" width="8" height="8" fill="#3572A5" />
-        <text x="40" y="102" class="label">Python <tspan fill="#fafafa" class="value">18.4%</tspan></text>
-        <path d="M 232.15040139666445 96.20317059908305 A 48 48 0 0 1 251.7925495519268 61.16265020345111" fill="none" stroke="#dea584" stroke-width="14" />
+        <text x="40" y="102" class="label">Python <tspan fill="#fafafa" class="value">18.7%</tspan></text>
+        <path d="M 232.1706556959052 95.95601391689405 A 48 48 0 0 1 251.8771143988963 61.10137141919736" fill="none" stroke="#dea584" stroke-width="14" />
         <rect x="25" y="110" width="8" height="8" fill="#dea584" />
         <text x="40" y="118" class="label">Rust <tspan fill="#fafafa" class="value">13.7%</tspan></text>
-        <path d="M 251.7925495519268 61.16265020345111 A 48 48 0 0 1 280.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
+        <path d="M 251.8771143988963 61.10137141919736 A 48 48 0 0 1 280.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
         <rect x="25" y="126" width="8" height="8" fill="#663399" />
         <text x="40" y="134" class="label">CSS <tspan fill="#fafafa" class="value">10.0%</tspan></text>
         </svg>
