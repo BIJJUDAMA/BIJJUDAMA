@@ -14,19 +14,19 @@
     
     <text x="30" y="35" class="title" fill="#fafafa">TOP LANGUAGES BY COMMIT</text>
     <line x1="30" y1="42" x2="160" y2="42" stroke="#ff0000" stroke-width="2" />
-    <path d="M 280.0 52.0 A 48 48 0 0 1 325.0087753713925 116.67963247699211" fill="none" stroke="#3178c6" stroke-width="14" />
+    <path d="M 280.0 52.0 A 48 48 0 0 1 325.2994095591215 115.87335798106292" fill="none" stroke="#3178c6" stroke-width="14" />
         <rect x="25" y="62" width="8" height="8" fill="#3178c6" />
-        <text x="40" y="70" class="label">TypeScript <tspan fill="#fafafa" class="value">30.6%</tspan></text>
-        <path d="M 325.0087753713925 116.67963247699211 A 48 48 0 0 1 254.16700253600837 140.45560828890603" fill="none" stroke="#f1e05a" stroke-width="14" />
+        <text x="40" y="70" class="label">TypeScript <tspan fill="#fafafa" class="value">30.4%</tspan></text>
+        <path d="M 325.2994095591215 115.87335798106292 A 48 48 0 0 1 255.57364718056607 141.32013175124848" fill="none" stroke="#f1e05a" stroke-width="14" />
         <rect x="25" y="78" width="8" height="8" fill="#f1e05a" />
-        <text x="40" y="86" class="label">JavaScript <tspan fill="#fafafa" class="value">28.4%</tspan></text>
-        <path d="M 254.16700253600837 140.45560828890603 A 48 48 0 0 1 232.26293259712608 94.98279004092198" fill="none" stroke="#3572A5" stroke-width="14" />
+        <text x="40" y="86" class="label">JavaScript <tspan fill="#fafafa" class="value">28.1%</tspan></text>
+        <path d="M 255.57364718056607 141.32013175124848 A 48 48 0 0 1 232.33554482809714 94.3343391236623" fill="none" stroke="#3572A5" stroke-width="14" />
         <rect x="25" y="94" width="8" height="8" fill="#3572A5" />
-        <text x="40" y="102" class="label">Python <tspan fill="#fafafa" class="value">17.6%</tspan></text>
-        <path d="M 232.26293259712608 94.98279004092198 A 48 48 0 0 1 254.91867524120707 59.07412617494941" fill="none" stroke="#dea584" stroke-width="14" />
+        <text x="40" y="102" class="label">Python <tspan fill="#fafafa" class="value">18.4%</tspan></text>
+        <path d="M 232.33554482809714 94.3343391236623 A 48 48 0 0 1 255.12764156174148 58.94679323464742" fill="none" stroke="#dea584" stroke-width="14" />
         <rect x="25" y="110" width="8" height="8" fill="#dea584" />
-        <text x="40" y="118" class="label">Rust <tspan fill="#fafafa" class="value">14.6%</tspan></text>
-        <path d="M 254.91867524120707 59.07412617494941 A 48 48 0 0 1 280.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
+        <text x="40" y="118" class="label">Rust <tspan fill="#fafafa" class="value">14.4%</tspan></text>
+        <path d="M 255.12764156174148 58.94679323464742 A 48 48 0 0 1 280.0 52.0" fill="none" stroke="#663399" stroke-width="14" />
         <rect x="25" y="126" width="8" height="8" fill="#663399" />
-        <text x="40" y="134" class="label">CSS <tspan fill="#fafafa" class="value">8.8%</tspan></text>
+        <text x="40" y="134" class="label">CSS <tspan fill="#fafafa" class="value">8.7%</tspan></text>
         </svg>
