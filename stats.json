@@ -6,17 +6,29 @@
     "joined_years_ago": 2
   },
   "stats": {
-    "stars": 0,
+    "stars": 5,
     "commits": 1900,
     "contributions": 2020,
     "prs": 27,
     "issues": 22,
     "contributed_to": 11,
-    "public_repos": 0
+    "public_repos": 18
   },
   "languages": {
-    "by_repo_size": {},
-    "by_commits": {}
+    "by_repo_size": {
+      "TypeScript": 46.3,
+      "Python": 26.7,
+      "JavaScript": 12.3,
+      "Rust": 9.2,
+      "CSS": 5.6
+    },
+    "by_commits": {
+      "TypeScript": 37.8,
+      "Python": 20.7,
+      "Rust": 18.5,
+      "JavaScript": 17.5,
+      "Go": 5.5
+    }
   },
-  "generated_at": "2026-08-19T14:59:24.173929"
+  "generated_at": "2026-08-19T15:53:32.057971"
 }
