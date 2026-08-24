@@ -23,12 +23,12 @@
       "Rust": 8.5
     },
     "by_commits": {
-      "TypeScript": 34.3,
-      "Python": 20.6,
+      "TypeScript": 34.2,
+      "Python": 20.5,
       "Rust": 16.8,
       "JavaScript": 15.9,
-      "Go": 12.4
+      "Go": 12.5
     }
   },
-  "generated_at": "2026-08-24T14:09:37.528873"
+  "generated_at": "2026-08-24T15:06:54.503024"
 }
