@@ -7,20 +7,20 @@
   },
   "stats": {
     "stars": 7,
-    "commits": 2289,
-    "contributions": 2418,
+    "commits": 2294,
+    "contributions": 2424,
     "prs": 32,
     "issues": 23,
     "contributed_to": 11,
-    "public_repos": 19
+    "public_repos": 20
   },
   "languages": {
     "by_repo_size": {
-      "TypeScript": 36.4,
-      "Python": 25.1,
-      "Go": 17.6,
-      "Astro": 11.7,
-      "JavaScript": 9.3
+      "TypeScript": 35.6,
+      "Python": 24.6,
+      "Go": 17.2,
+      "Astro": 11.4,
+      "Jupyter Notebook": 11.2
     },
     "by_commits": {
       "TypeScript": 34.0,
@@ -30,5 +30,5 @@
       "JavaScript": 15.3
     }
   },
-  "generated_at": "2026-09-12T14:14:28.025737"
+  "generated_at": "2026-09-12T17:18:03.550462"
 }
