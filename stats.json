@@ -7,8 +7,8 @@
   },
   "stats": {
     "stars": 7,
-    "commits": 2298,
-    "contributions": 2428,
+    "commits": 2299,
+    "contributions": 2429,
     "prs": 32,
     "issues": 23,
     "contributed_to": 11,
@@ -16,11 +16,11 @@
   },
   "languages": {
     "by_repo_size": {
-      "TypeScript": 35.6,
-      "Python": 24.6,
-      "Go": 17.2,
-      "Astro": 11.4,
-      "Jupyter Notebook": 11.2
+      "TypeScript": 30.1,
+      "Jupyter Notebook": 25.0,
+      "Python": 20.7,
+      "Go": 14.5,
+      "Astro": 9.6
     },
     "by_commits": {
       "TypeScript": 33.7,
@@ -30,5 +30,5 @@
       "Rust": 15.3
     }
   },
-  "generated_at": "2026-09-15T13:43:01.813226"
+  "generated_at": "2026-09-15T18:18:52.563526"
 }
