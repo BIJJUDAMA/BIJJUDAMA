@@ -6,29 +6,29 @@
     "joined_years_ago": 2
   },
   "stats": {
-    "stars": 7,
-    "commits": 2396,
-    "contributions": 2522,
-    "prs": 28,
-    "issues": 23,
-    "contributed_to": 12,
-    "public_repos": 22
+    "stars": 6,
+    "commits": 2948,
+    "contributions": 3041,
+    "prs": 30,
+    "issues": 14,
+    "contributed_to": 11,
+    "public_repos": 24
   },
   "languages": {
     "by_repo_size": {
-      "Jupyter Notebook": 35.3,
-      "TypeScript": 24.3,
-      "Python": 19.2,
-      "Go": 13.5,
-      "Astro": 7.7
+      "Jupyter Notebook": 50.4,
+      "TypeScript": 18.5,
+      "Go": 15.6,
+      "Python": 11.1,
+      "JavaScript": 4.3
     },
     "by_commits": {
-      "TypeScript": 32.6,
-      "Python": 20.7,
-      "Go": 17.3,
-      "JavaScript": 15.0,
-      "Rust": 14.4
+      "TypeScript": 33.7,
+      "Go": 27.8,
+      "Python": 20.8,
+      "JavaScript": 15.2,
+      "Jupyter Notebook": 2.5
     }
   },
-  "generated_at": "2026-09-26T07:53:12.786985"
+  "generated_at": "2026-10-21T06:21:41.036798"
 }
