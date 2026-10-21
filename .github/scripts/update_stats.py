@@ -3,7 +3,14 @@ import json
 import urllib.request
 import datetime
 import math
-from collections import defaultdict
+from language_stats import (
+    deduplicate_repositories,
+    sort_languages,
+    calculate_percentages,
+    aggregate_repo_languages,
+    aggregate_commit_languages,
+    build_donut_segments,
+)
 
 TOKEN = os.environ.get("GH_TOKEN")
 USERNAME = os.environ.get("GITHUB_REPOSITORY_OWNER") or "BIJJUDAMA"
@@ -126,7 +133,9 @@ while has_next_page:
           }}
           totalCount
           nodes {{
+            id
             name
+            nameWithOwner
             isPrivate
             stargazerCount
             defaultBranchRef {{
@@ -162,35 +171,20 @@ while has_next_page:
 # Process Repo Data (Aggregating Totals)
 public_repos_count = 0
 stars = 0
-langs_by_repo = defaultdict(int)
-langs_by_commit = defaultdict(int)
-lang_colors = {}
+unique_repos = deduplicate_repositories(all_repo_nodes)
+langs_by_repo, lang_colors = aggregate_repo_languages(unique_repos)
+langs_by_commit = aggregate_commit_languages(unique_repos)
 
-for repo in all_repo_nodes:
+for repo in unique_repos:
     if not repo['isPrivate']:
         public_repos_count += 1
     
     stars += repo['stargazerCount']
-    repo_commits = 0
-    try:
-        if repo['defaultBranchRef'] and repo['defaultBranchRef']['target']:
-            repo_commits = repo['defaultBranchRef']['target']['history']['totalCount']
-    except:
-        pass
-    
-    total_size = sum(edge['size'] for edge in repo['languages']['edges'])
-    for edge in repo['languages']['edges']:
-        name_l = edge['node']['name']
-        size = edge['size']
-        color = edge['node']['color']
-        lang_colors[name_l] = color
-        
-        langs_by_repo[name_l] += size
-        if total_size > 0:
-            langs_by_commit[name_l] += (size / total_size) * repo_commits
 
-top_langs_repo = sorted(langs_by_repo.items(), key=lambda x: x[1], reverse=True)[:5]
-top_langs_commit = sorted(langs_by_commit.items(), key=lambda x: x[1], reverse=True)[:5]
+top_langs_repo = sort_languages(langs_by_repo, limit=5)
+top_langs_commit = sort_languages(langs_by_commit, limit=5)
+total_repo_size_all = sum(langs_by_repo.values())
+total_commit_size_all = sum(langs_by_commit.values())
 
 theme = {
     'shadow': '#000000',
@@ -217,8 +211,8 @@ icons = {
 }
 
 
-def generate_donut(data, title):
-    total = sum(d[1] for d in data)
+def generate_donut(data, title, total_value=None):
+    total = total_value if total_value is not None else sum(d[1] for d in data)
     w, h = 372, 170
     shadow_offset = 8
     canvas_w = w + shadow_offset
@@ -245,9 +239,7 @@ def generate_donut(data, title):
     cx, cy, radius, stroke_width = 280, 100, 48, 14
     current_angle = 0
     y_offset = 70
-    for name_l, val in data:
-        pct = (val / total) * 100 if total > 0 else 0
-        angle = (val / total) * 360 if total > 0 else 0
+    for name_l, val, pct, angle in build_donut_segments(data, total):
         if angle > 359.9: angle = 359.9
         
         if angle > 0:
@@ -273,11 +265,49 @@ def generate_donut(data, title):
     return svg
 
 
+def write_outputs_atomically(outputs):
+    tmp_paths = []
+    backups = []
+    replaced = []
+
+    for path, content in outputs.items():
+        tmp_path = f"{path}.tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        tmp_paths.append((path, tmp_path))
+
+    try:
+        for path, tmp_path in tmp_paths:
+            backup_path = None
+            candidate_backup = f"{path}.bak"
+            if os.path.exists(path):
+                os.replace(path, candidate_backup)
+                backups.append((path, candidate_backup))
+                backup_path = candidate_backup
+            replaced.append((path, backup_path))
+            os.replace(tmp_path, path)
+    except Exception:
+        for path, backup_path in reversed(replaced):
+            if os.path.exists(path):
+                os.remove(path)
+            if backup_path and os.path.exists(backup_path):
+                os.replace(backup_path, path)
+        for _, tmp_path in tmp_paths:
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+        raise
+    finally:
+        for _, backup_path in backups:
+            if os.path.exists(backup_path):
+                os.remove(backup_path)
+
+
 # 1. Stats SVG
 w, h = 372, 170
 shadow_offset = 8
 canvas_w = w + shadow_offset
 canvas_h = h + shadow_offset
+output_files = {}
 svg_stats = f'''<svg width="{canvas_w}" height="{canvas_h}" viewBox="0 0 {canvas_w} {canvas_h}" xmlns="http://www.w3.org/2000/svg">
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
@@ -318,16 +348,13 @@ svg_stats = f'''<svg width="{canvas_w}" height="{canvas_h}" viewBox="0 0 {canvas
   </g>
 </svg>'''
 
-with open("1-stats.svg", "w", encoding="utf-8") as f:
-    f.write(svg_stats)
+output_files["1-stats.svg"] = svg_stats
 
 # 2. Languages Repo
-with open("2-top-languages.svg", "w", encoding="utf-8") as f:
-    f.write(generate_donut(top_langs_repo, "Top Languages by Repo"))
+output_files["2-top-languages.svg"] = generate_donut(top_langs_repo, "Top Languages by Repo", total_repo_size_all)
 
 # 3. Top Languages (By Commit)
-with open("3-top-languages-by-commit.svg", "w", encoding="utf-8") as f:
-    f.write(generate_donut(top_langs_commit, "Top Languages by Commit"))
+output_files["3-top-languages-by-commit.svg"] = generate_donut(top_langs_commit, "Top Languages by Commit")
 
 # --- Dynamic README Update (2x2 Grid with Clickable Badges) ---
 try:
@@ -367,8 +394,7 @@ github_icon = icons['github'].replace('<path ', '<path fill="currentColor" ') # 
 for i, repo in enumerate(favorites[:3], 1):
     badge_content = generate_repo_badge(repo['name'], theme, github_icon)
     filename = f"fav-{i}.svg"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(badge_content)
+    output_files[filename] = badge_content
     
     badges_html += f'<a href="{repo["url"]}"><img src="{filename}" width="372" /></a>'
     if i < 3: badges_html += "<br/>" 
@@ -407,9 +433,7 @@ try:
         readme_content,
         flags=re.DOTALL
     )
-
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write(updated_readme)
+    output_files["README.md"] = updated_readme
     print("README.md updated successfully with 2x2 grid.")
 except Exception as e:
     print(f"Error updating README.md: {e}")
@@ -473,8 +497,7 @@ svg_profile = f'''<svg width="908" height="258" viewBox="0 0 908 258" xmlns="htt
   <text x="{x_start+chart_w+10}" y="{y_start - chart_h}" class="axis-label" fill="{theme['muted']}">{max_contrib}</text>
 </svg>'''
 
-with open("0-profile-details.svg", "w", encoding="utf-8") as f:
-    f.write(svg_profile)
+output_files["0-profile-details.svg"] = svg_profile
 
 # 5. About Terminal SVG
 advanced_svg = f"""<svg width="608" height="238" viewBox="0 0 608 238" xmlns="http://www.w3.org/2000/svg">
@@ -576,12 +599,11 @@ advanced_svg = f"""<svg width="608" height="238" viewBox="0 0 608 238" xmlns="ht
   </g>
 </svg>"""
 
-with open("about.svg", "w", encoding="utf-8") as f:
-    f.write(advanced_svg)
+output_files["about.svg"] = advanced_svg
 
 # 6. Output to JSON
-total_repo_size = sum(d[1] for d in top_langs_repo)
-total_commit_val = sum(d[1] for d in top_langs_commit)
+top_repo_percentages = calculate_percentages(top_langs_repo, total_repo_size_all)
+top_commit_percentages = calculate_percentages(top_langs_commit, total_commit_size_all)
 
 stats_data = {
     "user": {
@@ -600,13 +622,15 @@ stats_data = {
         "public_repos": public_repos_count
     },
     "languages": {
-        "by_repo_size": {lang: round((size / total_repo_size) * 100, 1) if total_repo_size > 0 else 0 for lang, size in top_langs_repo},
-        "by_commits": {lang: round((val / total_commit_val) * 100, 1) if total_commit_val > 0 else 0 for lang, val in top_langs_commit}
+        "by_repo_size": {lang: round(top_repo_percentages[lang], 1) for lang, _ in top_langs_repo},
+        "by_commits": {lang: round(top_commit_percentages[lang], 1) for lang, _ in top_langs_commit}
     },
     "generated_at": datetime.datetime.now().isoformat()
 }
 
-with open("stats.json", "w", encoding="utf-8") as f:
-    json.dump(stats_data, f, indent=2)
+output_files["stats.json"] = json.dumps(stats_data, indent=2)
 
-
+try:
+    write_outputs_atomically(output_files)
+except Exception as e:
+    print(f"Error writing output files: {e}")
