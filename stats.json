@@ -16,19 +16,19 @@
   },
   "languages": {
     "by_repo_size": {
-      "Jupyter Notebook": 49.0,
-      "TypeScript": 18.0,
-      "Go": 15.2,
-      "Python": 10.7,
+      "Jupyter Notebook": 48.8,
+      "TypeScript": 17.9,
+      "Go": 15.1,
+      "Python": 11.0,
       "JavaScript": 4.2
     },
     "by_commits": {
       "TypeScript": 31.1,
       "Go": 25.6,
-      "Python": 19.2,
+      "Python": 19.4,
       "JavaScript": 14.0,
       "Jupyter Notebook": 2.3
     }
   },
-  "generated_at": "2026-10-22T00:03:46.212620"
+  "generated_at": "2026-10-22T05:06:14.999790"
 }
